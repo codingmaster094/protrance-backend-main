@@ -29,6 +29,26 @@ export const Hero: Field = {
   required: true, // optional: set to true if you want this field to be mandatory
   defaultValue: 'normal', // optional: set default
 },
+   {
+  name: 'Image_Position',
+  type: 'select',
+  options: [
+    {
+      label: 'Top',
+      value: 'top',
+    },
+    {
+      label: 'Middle',
+      value: 'middle',
+    },
+    {
+      label: 'Bottam',
+      value: 'bottam',
+    },
+  ],
+  required: true, // optional: set to true if you want this field to be mandatory
+  defaultValue: 'middle', // optional: set default
+},
     {
       name: 'heroImage',
       type: 'upload',
