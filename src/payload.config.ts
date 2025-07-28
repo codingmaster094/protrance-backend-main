@@ -27,7 +27,7 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-  serverURL: 'https://protrance-backend.vercel.app',
+  serverURL: 'https://protrance-backend-main.vercel.app',
   admin: {
     user: Users.slug,
     importMap: {
@@ -35,7 +35,7 @@ export default buildConfig({
     },
   },
    cors: [
-  'https://protrance-frontend.vercel.app', // Allow your frontend domain
+  'https://protrance-backend-main.vercel.app', // Allow your frontend domain
 ],
   collections: [Users, Media, Posts],
   globals: [
