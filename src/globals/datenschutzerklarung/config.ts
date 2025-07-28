@@ -1,8 +1,8 @@
-import type { CollectionConfig } from 'payload'
+import type { GlobalConfig } from 'payload'
 import { Contents } from '@/contents/config'
 import { SEO } from '@/SEO/config'
 
-export const Datenschutzerklarung: CollectionConfig = {
+export const Datenschutzerklarung: GlobalConfig = {
   slug: 'datenschutzerklarung',
   access: {
     read: () => true,
