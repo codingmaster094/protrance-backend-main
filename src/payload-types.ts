@@ -100,6 +100,8 @@ export interface Config {
     kontakt: Kontakt;
     'uber-mich': UberMich;
     blog: Blog;
+    impressum: Impressum;
+    datenschutzerklarung: Datenschutzerklarung;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -115,6 +117,8 @@ export interface Config {
     kontakt: KontaktSelect<false> | KontaktSelect<true>;
     'uber-mich': UberMichSelect<false> | UberMichSelect<true>;
     blog: BlogSelect<false> | BlogSelect<true>;
+    impressum: ImpressumSelect<false> | ImpressumSelect<true>;
+    datenschutzerklarung: DatenschutzerklarungSelect<false> | DatenschutzerklarungSelect<true>;
   };
   locale: null;
   user: User & {
@@ -196,6 +200,7 @@ export interface Post {
   slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
+    Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
@@ -476,6 +481,7 @@ export interface PostsSelect<T extends boolean = true> {
     | T
     | {
         container_Hight?: T;
+        Image_Position?: T;
         heroImage?: T;
         text?: T;
         type?: T;
@@ -766,6 +772,7 @@ export interface Home {
   title?: string | null;
   hero: {
     container_Hight: 'full' | 'normal';
+    Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
@@ -1256,6 +1263,7 @@ export interface Abnehman {
   title?: string | null;
   hero: {
     container_Hight: 'full' | 'normal';
+    Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
@@ -1557,6 +1565,7 @@ export interface Entspannung_StressabbauPage {
   title?: string | null;
   hero: {
     container_Hight: 'full' | 'normal';
+    Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
@@ -1879,6 +1888,7 @@ export interface Lampenfieber_Prufungsangst {
   title?: string | null;
   hero: {
     container_Hight: 'full' | 'normal';
+    Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
@@ -2194,6 +2204,7 @@ export interface Raucherentwohnung {
   title?: string | null;
   hero: {
     container_Hight: 'full' | 'normal';
+    Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
@@ -2510,6 +2521,7 @@ export interface Selbstfursorge {
   title?: string | null;
   hero: {
     container_Hight: 'full' | 'normal';
+    Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
@@ -2826,6 +2838,7 @@ export interface Kontakt {
   title?: string | null;
   hero: {
     container_Hight: 'full' | 'normal';
+    Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
@@ -2952,6 +2965,7 @@ export interface UberMich {
   title?: string | null;
   hero: {
     container_Hight: 'full' | 'normal';
+    Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
@@ -3308,6 +3322,7 @@ export interface Blog {
   title?: string | null;
   hero: {
     container_Hight: 'full' | 'normal';
+    Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
@@ -3405,6 +3420,92 @@ export interface Blog {
     };
   };
   publishedAt?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "impressum".
+ */
+export interface Impressum {
+  id: string;
+  title: string;
+  contents?: {
+    Gutenberg?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    Gutenberg_html?: string | null;
+    Featured_image?: (string | null) | Media;
+    type?: ('none' | 'highImpact' | 'mediumImpact' | 'lowImpact') | null;
+    media?: (string | null) | Media;
+  };
+  seo?: {
+    meta?: {
+      title?: string | null;
+      description?: string | null;
+      /**
+       * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+       */
+      image?: (string | null) | Media;
+      canonicalUrl?: string | null;
+    };
+  };
+  publishedDate?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "datenschutzerklarung".
+ */
+export interface Datenschutzerklarung {
+  id: string;
+  title: string;
+  contents?: {
+    Gutenberg?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    Gutenberg_html?: string | null;
+    Featured_image?: (string | null) | Media;
+    type?: ('none' | 'highImpact' | 'mediumImpact' | 'lowImpact') | null;
+    media?: (string | null) | Media;
+  };
+  seo?: {
+    meta?: {
+      title?: string | null;
+      description?: string | null;
+      /**
+       * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+       */
+      image?: (string | null) | Media;
+      canonicalUrl?: string | null;
+    };
+  };
+  publishedDate?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3544,6 +3645,7 @@ export interface HomeSelect<T extends boolean = true> {
     | T
     | {
         container_Hight?: T;
+        Image_Position?: T;
         heroImage?: T;
         text?: T;
         type?: T;
@@ -3799,6 +3901,7 @@ export interface AbnehmenSelect<T extends boolean = true> {
     | T
     | {
         container_Hight?: T;
+        Image_Position?: T;
         heroImage?: T;
         text?: T;
         type?: T;
@@ -3959,6 +4062,7 @@ export interface Entspannung_StressabbauPageSelect<T extends boolean = true> {
     | T
     | {
         container_Hight?: T;
+        Image_Position?: T;
         heroImage?: T;
         text?: T;
         type?: T;
@@ -4128,6 +4232,7 @@ export interface Lampenfieber_PrufungsangstSelect<T extends boolean = true> {
     | T
     | {
         container_Hight?: T;
+        Image_Position?: T;
         heroImage?: T;
         text?: T;
         type?: T;
@@ -4290,6 +4395,7 @@ export interface RaucherentwohnungSelect<T extends boolean = true> {
     | T
     | {
         container_Hight?: T;
+        Image_Position?: T;
         heroImage?: T;
         text?: T;
         type?: T;
@@ -4453,6 +4559,7 @@ export interface SelbstfursorgeSelect<T extends boolean = true> {
     | T
     | {
         container_Hight?: T;
+        Image_Position?: T;
         heroImage?: T;
         text?: T;
         type?: T;
@@ -4616,6 +4723,7 @@ export interface KontaktSelect<T extends boolean = true> {
     | T
     | {
         container_Hight?: T;
+        Image_Position?: T;
         heroImage?: T;
         text?: T;
         type?: T;
@@ -4701,6 +4809,7 @@ export interface UberMichSelect<T extends boolean = true> {
     | T
     | {
         container_Hight?: T;
+        Image_Position?: T;
         heroImage?: T;
         text?: T;
         type?: T;
@@ -4876,6 +4985,7 @@ export interface BlogSelect<T extends boolean = true> {
     | T
     | {
         container_Hight?: T;
+        Image_Position?: T;
         heroImage?: T;
         text?: T;
         type?: T;
@@ -4944,6 +5054,70 @@ export interface BlogSelect<T extends boolean = true> {
             };
       };
   publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "impressum_select".
+ */
+export interface ImpressumSelect<T extends boolean = true> {
+  title?: T;
+  contents?:
+    | T
+    | {
+        Gutenberg?: T;
+        Gutenberg_html?: T;
+        Featured_image?: T;
+        type?: T;
+        media?: T;
+      };
+  seo?:
+    | T
+    | {
+        meta?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              canonicalUrl?: T;
+            };
+      };
+  publishedDate?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "datenschutzerklarung_select".
+ */
+export interface DatenschutzerklarungSelect<T extends boolean = true> {
+  title?: T;
+  contents?:
+    | T
+    | {
+        Gutenberg?: T;
+        Gutenberg_html?: T;
+        Featured_image?: T;
+        type?: T;
+        media?: T;
+      };
+  seo?:
+    | T
+    | {
+        meta?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              canonicalUrl?: T;
+            };
+      };
+  publishedDate?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

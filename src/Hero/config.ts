@@ -26,8 +26,8 @@ export const Hero: Field = {
       value: 'normal',
     },
   ],
-  required: true, // optional: set to true if you want this field to be mandatory
-  defaultValue: 'normal', // optional: set default
+  required: true, 
+  defaultValue: 'normal', 
 },
    {
   name: 'Image_Position',

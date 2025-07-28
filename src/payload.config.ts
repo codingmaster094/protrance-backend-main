@@ -20,6 +20,8 @@ import { SelbstfursorgePage } from './globals/Selbstfursorge/config'
 import { KontaktPage } from './globals/Kontakt/config'
 import { Uber_michPage } from './globals/Uber_mich/config'
 import { BlogPage } from './globals/Blog/config'
+import { Impressum } from './globals/impressum/config'
+import { Datenschutzerklarung } from './globals/datenschutzerklarung/config'
 import { Posts } from './collections/posts'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 const filename = fileURLToPath(import.meta.url)
@@ -46,6 +48,8 @@ export default buildConfig({
     KontaktPage,
     Uber_michPage,
     BlogPage,
+    Impressum,
+    Datenschutzerklarung
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
