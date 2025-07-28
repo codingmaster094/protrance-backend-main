@@ -1,6 +1,5 @@
 // storage-adapter-import-placeholder
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -22,21 +21,16 @@ import { KontaktPage } from './globals/Kontakt/config'
 import { Uber_michPage } from './globals/Uber_mich/config'
 import { BlogPage } from './globals/Blog/config'
 import { Posts } from './collections/posts'
-
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-
 export default buildConfig({
   serverURL: 'https://protrance-backend-main.vercel.app',
   admin: {
     user: Users.slug,
-    importMap: {
-      baseDir: path.resolve(dirname),
-    },
   },
-   cors: [
-  'https://protrance-backend-main.vercel.app', // Allow your frontend domain
-],
+  cors: [
+    'https://protrance-backend-main.vercel.app'],
   collections: [Users, Media, Posts],
   globals: [
     Header,
@@ -63,7 +57,12 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    payloadCloudPlugin(),
-    // storage-adapter-placeholder
+    vercelBlobStorage({
+            enabled: true, 
+            collections: {
+                media: true, 
+            },
+            token: process.env.BLOB_READ_WRITE_TOKEN, 
+        }),
   ],
 })
