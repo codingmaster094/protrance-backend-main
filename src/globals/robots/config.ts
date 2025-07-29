@@ -7,7 +7,7 @@ export const Robots: GlobalConfig = {
   fields: [
     {
       name: 'robots',
-      type: 'richText',
+      type: 'text',
       label: 'robots Txt',
     },
   ],
