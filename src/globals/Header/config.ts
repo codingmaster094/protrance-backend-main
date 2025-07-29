@@ -1,11 +1,31 @@
 import type { GlobalConfig } from 'payload'
 import { revalidateHeader } from './hooks/revalidateHeader'
+import slugify from 'slugify'
 export const Header: GlobalConfig = {
   slug: 'header',
   access: {
     read: () => true,
   },
   fields: [
+    {
+      name: 'title',
+      type: 'text',
+      required: false,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      admin: {
+        readOnly: true,
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, siblingData }) => value || slugify(siblingData.title, { lower: true }),
+        ],
+      },
+    },
     {
       name: 'Header_Logo',
       type: 'upload',

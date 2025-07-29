@@ -1,6 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { revalidateFooter } from './hooks/revalidateFooter'
-
+import slugify from 'slugify'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
@@ -8,6 +8,25 @@ export const Footer: GlobalConfig = {
     read: () => true,
   },
   fields: [
+    {
+      name: 'title',
+      type: 'text',
+      required: false,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      admin: {
+        readOnly: true,
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, siblingData }) => value || slugify(siblingData.title, { lower: true }),
+        ],
+      },
+    },
     {
       name: 'footerlogo',
       type: 'upload',

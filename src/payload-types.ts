@@ -157,6 +157,8 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: string;
+  title?: string | null;
+  slug: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -181,6 +183,8 @@ export interface User {
  */
 export interface Media {
   id: string;
+  title?: string | null;
+  slug: string;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -454,6 +458,8 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -476,6 +482,8 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
   alt?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -652,6 +660,8 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: string;
+  title?: string | null;
+  slug: string;
   Header_Logo?: (string | null) | Media;
   link?: {
     Kontakt_label?: string | null;
@@ -669,6 +679,8 @@ export interface Header {
  */
 export interface Footer {
   id: string;
+  title?: string | null;
+  slug: string;
   footerlogo?: (string | null) | Media;
   description?: string | null;
   sprechzeiten?:
@@ -3570,6 +3582,8 @@ export interface PagesGlobal {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
   Header_Logo?: T;
   link?:
     | T
@@ -3589,6 +3603,8 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
   footerlogo?: T;
   description?: T;
   sprechzeiten?:
