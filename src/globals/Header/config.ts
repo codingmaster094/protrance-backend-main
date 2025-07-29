@@ -19,7 +19,7 @@ export const Header: GlobalConfig = {
       label: 'Link',
       fields: [
         {
-          name: 'Kontakt label',
+          name: 'Kontakt_label',
           type: 'text',
           label: 'Link Label',
         },
