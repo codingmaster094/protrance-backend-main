@@ -40,13 +40,13 @@ export async function GET() {
 
 
 
-  const sitemapUrls = [
-    ...posts.docs.map(({ slug, updatedAt }) => ({
-      url: `${url}/${slug}`,
-      lastModified: new Date(updatedAt),
-    })),
-    ...globalUrls.filter(Boolean),
-  ];
+ const sitemapUrls: { url: string; lastModified: Date }[] = [
+  ...posts.docs.map(({ slug, updatedAt }) => ({
+    url: `${url}/${slug}`,
+    lastModified: new Date(updatedAt),
+  })),
+  ...globalUrls.flatMap((item) => (item ? [item] : [])), // avoids .filter(Boolean)
+];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
