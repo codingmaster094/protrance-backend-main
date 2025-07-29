@@ -10,7 +10,7 @@ interface Post {
   title: string
   contents: {
     // Assuming 'contents' is the group name from your collection config
-    gutenberg_content: SerializedEditorState // This is where the Lexical JSON resides
+    Gutenberg: SerializedEditorState // This is where the Lexical JSON resides
     Featured_image?: {
       url: string
       alt?: string
@@ -46,7 +46,7 @@ const SinglePostPage = () => {
   if (!post) return <p className="p-10">Loading...</p>
 
   // Convert Lexical JSON to HTML using convertLexicalToHTML
-  const htmlContent = post.contents.gutenberg_content
+  const htmlContent = post.contents.Gutenberg
     ? convertLexicalToHTML({ data: post.contents.Gutenberg })
     : ''
 
