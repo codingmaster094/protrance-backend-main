@@ -104,6 +104,7 @@ export interface Config {
     blog: Blog;
     impressum: Impressum;
     datenschutzerklarung: Datenschutzerklarung;
+    'pages-global': PagesGlobal;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -121,6 +122,7 @@ export interface Config {
     blog: BlogSelect<false> | BlogSelect<true>;
     impressum: ImpressumSelect<false> | ImpressumSelect<true>;
     datenschutzerklarung: DatenschutzerklarungSelect<false> | DatenschutzerklarungSelect<true>;
+    'pages-global': PagesGlobalSelect<false> | PagesGlobalSelect<true>;
   };
   locale: null;
   user: User & {
@@ -3554,6 +3556,17 @@ export interface Datenschutzerklarung {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages-global".
+ */
+export interface PagesGlobal {
+  id: string;
+  title: string;
+  slug: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -5179,6 +5192,17 @@ export interface DatenschutzerklarungSelect<T extends boolean = true> {
             };
       };
   publishedDate?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages-global_select".
+ */
+export interface PagesGlobalSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
