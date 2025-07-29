@@ -47,7 +47,7 @@ const SinglePostPage = () => {
 
   // Convert Lexical JSON to HTML using convertLexicalToHTML
   const htmlContent = post.contents.gutenberg_content
-    ? convertLexicalToHTML({ data: post.contents.gutenberg_content })
+    ? convertLexicalToHTML({ data: post.contents.Gutenberg })
     : ''
 
     console.log('htmlContent', htmlContent)
