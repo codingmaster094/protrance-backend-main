@@ -21,12 +21,14 @@ export async function GET() {
   const globalUrls = await Promise.all(
     (config.globals || []).map(async (globalConfig) => {
       const globalData = await payload.findGlobal({ slug: globalConfig.slug });
-      if (globalData && globalData.slug !=undefined) {
-        console.log("globalData", globalData.slug)
-        return {
-          url: `${url}/${globalData.slug}`,
-          lastModified: new Date(globalData.updatedAt),
-        };
+      if (globalData) {
+        if(globalData.slug !==undefined){
+          console.log("globalData", globalData.slug)
+          return {
+            url: `${url}/${globalData.slug}`,
+            lastModified: new Date(globalData.updatedAt),
+          };
+        }
       }
       return null;
     })
