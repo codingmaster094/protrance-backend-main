@@ -22,7 +22,7 @@ export async function GET() {
     (config.globals || []).map(async (globalConfig) => {
       const globalData = await payload.findGlobal({ slug: globalConfig.slug });
 
-      if (globalData && globalData.slug) {
+      if (globalData) {
         return {
           url: `${url}/${globalData.slug}`,
           lastModified: new Date(globalData.updatedAt),
