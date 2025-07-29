@@ -25,6 +25,7 @@ import { Datenschutzerklarung } from './globals/datenschutzerklarung/config'
 import { Posts } from './collections/posts'
 import { Pages } from './collections/Pages'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
+import { Robots } from './globals/robots/config'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 export default buildConfig({
@@ -51,6 +52,7 @@ export default buildConfig({
     BlogPage,
     Impressum,
     Datenschutzerklarung,
+    Robots
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
