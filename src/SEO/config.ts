@@ -6,6 +6,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+
 export const SEO: Field = {
   name: 'seo',
   type: 'group',
@@ -15,26 +16,18 @@ export const SEO: Field = {
       label: 'SEO',
       type: 'group', 
       fields: [
-        MetaTitleField({
-          hasGenerateFn: true,
-        }),
-        MetaDescriptionField({
-          hasGenerateFn: true,
-        }),
-        MetaImageField({
-          relationTo: 'media',
-        }),
+        MetaTitleField({ hasGenerateFn: true }),
+        MetaDescriptionField({ hasGenerateFn: true }),
+        MetaImageField({ relationTo: 'media' }),
         {
           name: 'canonicalUrl',
           label: 'Canonical URL',
           type: 'text',
           hooks: {
-            beforeChange: [async ({  value }) => (value ? value : 'https://example.com')],
+            beforeChange: [async ({ value }) => (value ? value : 'https://example.com')],
           },
         },
-        PreviewField({
-          hasGenerateFn: true,
-        }),
+        PreviewField({ hasGenerateFn: true }),
         OverviewField({
           titlePath: 'meta.title',
           descriptionPath: 'meta.description',

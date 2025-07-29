@@ -23,6 +23,7 @@ import { BlogPage } from './globals/Blog/config'
 import { Impressum } from './globals/impressum/config'
 import { Datenschutzerklarung } from './globals/datenschutzerklarung/config'
 import { Posts } from './collections/posts'
+import { Pages } from './collections/Pages'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -33,7 +34,7 @@ export default buildConfig({
   },
   cors: [
     'https://protrance-backend-main.vercel.app'],
-  collections: [Users, Media, Posts],
+  collections: [Users, Media, Posts , Pages],
   globals: [
     Header,
     Footer,

@@ -10,6 +10,7 @@ import { Wichtige_Meilensteine } from '@/wichtige_meilensteine/config'
 import { Reviews } from '@/enableReviews/config'
 import { protance_zahlen } from '@/Protance_Zahlen/config'
 import { SEO } from '@/SEO/config'
+import slugify from 'slugify'
 export const Uber_michPage: GlobalConfig = {
   slug: 'uber-mich',
   access: {
@@ -20,6 +21,20 @@ export const Uber_michPage: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      admin: {
+        readOnly: true,
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, siblingData }) => value || slugify(siblingData.title, { lower: true }),
+        ],
+      },
     },
     {
       type: 'tabs',

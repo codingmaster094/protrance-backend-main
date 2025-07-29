@@ -5,6 +5,7 @@ import { Kontaktmoglichkeiten } from '@/Kontaktmoglichkeiten/config'
 import { KontaktMap } from '@/KontaktMap/config'
 import { Reviews } from '@/enableReviews/config'
 import { SEO } from '@/SEO/config'
+import slugify from 'slugify'
 export const KontaktPage: GlobalConfig = {
   slug: 'kontakt',
   access: {
@@ -15,6 +16,20 @@ export const KontaktPage: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      admin: {
+        readOnly: true,
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, siblingData }) => value || slugify(siblingData.title, { lower: true }),
+        ],
+      },
     },
     {
       type: 'tabs',

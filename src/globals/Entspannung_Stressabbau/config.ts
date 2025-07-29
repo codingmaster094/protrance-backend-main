@@ -9,6 +9,7 @@ import { Meine_Referenzen } from '@/Meine_Referenzen/config'
 import { Reviews } from '@/enableReviews/config'
 import { faq } from '@/faq/config'
 import { SEO } from '@/SEO/config'
+import slugify from 'slugify'
 export const Entspannung_StressabbauPage: GlobalConfig = {
   slug: 'entspannung_StressabbauPage',
   access: {
@@ -19,6 +20,20 @@ export const Entspannung_StressabbauPage: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      admin: {
+        readOnly: true,
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, siblingData }) => value || slugify(siblingData.title, { lower: true }),
+        ],
+      },
     },
     {
       type: 'tabs',

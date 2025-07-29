@@ -6,6 +6,7 @@ import { partnerlogo } from '@/partner_logos/config'
 import { cta } from '@/CTA/config'
 import { SEO } from '@/SEO/config'
 import { Blog_List_Title } from '@/text_field/config'
+import slugify from 'slugify'
 export const BlogPage: GlobalConfig = {
   slug: 'blog',
   access: {
@@ -16,6 +17,20 @@ export const BlogPage: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      admin: {
+        readOnly: true,
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, siblingData }) => value || slugify(siblingData.title, { lower: true }),
+        ],
+      },
     },
     {
       type: 'tabs',

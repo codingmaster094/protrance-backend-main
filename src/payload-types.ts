@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     posts: Post;
+    pages: Page;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -371,6 +373,17 @@ export interface Post {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  title: string;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -387,6 +400,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'posts';
         value: string | Post;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -587,6 +604,16 @@ export interface PostsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -624,6 +651,11 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Header {
   id: string;
   Header_Logo?: (string | null) | Media;
+  link?: {
+    Kontakt_label?: string | null;
+    url?: string | null;
+    target?: ('_self' | '_blank') | null;
+  };
   type?: ('none' | 'highImpact' | 'mediumImpact' | 'lowImpact') | null;
   media?: (string | null) | Media;
   updatedAt?: string | null;
@@ -770,6 +802,7 @@ export interface Review {
 export interface Home {
   id: string;
   title?: string | null;
+  slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
     Image_Position: 'top' | 'middle' | 'bottam';
@@ -1261,6 +1294,7 @@ export interface Home {
 export interface Abnehman {
   id: string;
   title?: string | null;
+  slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
     Image_Position: 'top' | 'middle' | 'bottam';
@@ -1563,6 +1597,7 @@ export interface Abnehman {
 export interface Entspannung_StressabbauPage {
   id: string;
   title?: string | null;
+  slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
     Image_Position: 'top' | 'middle' | 'bottam';
@@ -1886,6 +1921,7 @@ export interface Entspannung_StressabbauPage {
 export interface Lampenfieber_Prufungsangst {
   id: string;
   title?: string | null;
+  slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
     Image_Position: 'top' | 'middle' | 'bottam';
@@ -2202,6 +2238,7 @@ export interface Lampenfieber_Prufungsangst {
 export interface Raucherentwohnung {
   id: string;
   title?: string | null;
+  slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
     Image_Position: 'top' | 'middle' | 'bottam';
@@ -2519,6 +2556,7 @@ export interface Raucherentwohnung {
 export interface Selbstfursorge {
   id: string;
   title?: string | null;
+  slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
     Image_Position: 'top' | 'middle' | 'bottam';
@@ -2836,6 +2874,7 @@ export interface Selbstfursorge {
 export interface Kontakt {
   id: string;
   title?: string | null;
+  slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
     Image_Position: 'top' | 'middle' | 'bottam';
@@ -2963,6 +3002,7 @@ export interface Kontakt {
 export interface UberMich {
   id: string;
   title?: string | null;
+  slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
     Image_Position: 'top' | 'middle' | 'bottam';
@@ -3320,6 +3360,7 @@ export interface UberMich {
 export interface Blog {
   id: string;
   title?: string | null;
+  slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
     Image_Position: 'top' | 'middle' | 'bottam';
@@ -3430,6 +3471,7 @@ export interface Blog {
 export interface Impressum {
   id: string;
   title: string;
+  slug: string;
   contents?: {
     Gutenberg?: {
       root: {
@@ -3473,6 +3515,7 @@ export interface Impressum {
 export interface Datenschutzerklarung {
   id: string;
   title: string;
+  slug: string;
   contents?: {
     Gutenberg?: {
       root: {
@@ -3515,6 +3558,13 @@ export interface Datenschutzerklarung {
  */
 export interface HeaderSelect<T extends boolean = true> {
   Header_Logo?: T;
+  link?:
+    | T
+    | {
+        Kontakt_label?: T;
+        url?: T;
+        target?: T;
+      };
   type?: T;
   media?: T;
   updatedAt?: T;
@@ -3641,6 +3691,7 @@ export interface ReviewsSelect<T extends boolean = true> {
  */
 export interface HomeSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   hero?:
     | T
     | {
@@ -3897,6 +3948,7 @@ export interface HomeSelect<T extends boolean = true> {
  */
 export interface AbnehmenSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   hero?:
     | T
     | {
@@ -4058,6 +4110,7 @@ export interface AbnehmenSelect<T extends boolean = true> {
  */
 export interface Entspannung_StressabbauPageSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   hero?:
     | T
     | {
@@ -4228,6 +4281,7 @@ export interface Entspannung_StressabbauPageSelect<T extends boolean = true> {
  */
 export interface Lampenfieber_PrufungsangstSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   hero?:
     | T
     | {
@@ -4391,6 +4445,7 @@ export interface Lampenfieber_PrufungsangstSelect<T extends boolean = true> {
  */
 export interface RaucherentwohnungSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   hero?:
     | T
     | {
@@ -4555,6 +4610,7 @@ export interface RaucherentwohnungSelect<T extends boolean = true> {
  */
 export interface SelbstfursorgeSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   hero?:
     | T
     | {
@@ -4719,6 +4775,7 @@ export interface SelbstfursorgeSelect<T extends boolean = true> {
  */
 export interface KontaktSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   hero?:
     | T
     | {
@@ -4805,6 +4862,7 @@ export interface KontaktSelect<T extends boolean = true> {
  */
 export interface UberMichSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   hero?:
     | T
     | {
@@ -4981,6 +5039,7 @@ export interface UberMichSelect<T extends boolean = true> {
  */
 export interface BlogSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   hero?:
     | T
     | {
@@ -5064,6 +5123,7 @@ export interface BlogSelect<T extends boolean = true> {
  */
 export interface ImpressumSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   contents?:
     | T
     | {
@@ -5096,6 +5156,7 @@ export interface ImpressumSelect<T extends boolean = true> {
  */
 export interface DatenschutzerklarungSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   contents?:
     | T
     | {
