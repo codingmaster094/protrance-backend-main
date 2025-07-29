@@ -21,8 +21,8 @@ export async function GET() {
   const globalUrls = await Promise.all(
     (config.globals || []).map(async (globalConfig) => {
       const globalData = await payload.findGlobal({ slug: globalConfig.slug });
-      console.log("globalData", globalData.slug)
-      if (globalData && globalData.slug) {
+      if (globalData && globalData.slug !=undefined) {
+        console.log("globalData", globalData.slug)
         return {
           url: `${url}/${globalData.slug}`,
           lastModified: new Date(globalData.updatedAt),

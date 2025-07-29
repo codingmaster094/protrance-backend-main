@@ -8,7 +8,6 @@ import sharp from 'sharp'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Header } from './globals/Header/config'
-import { PagesGlobal  } from './globals/PagesGlobal/config'
 import { Footer } from './globals/Footer/config'
 import { menus } from './menus/config'
 import { Reviews } from './Reviews/config'
@@ -52,7 +51,6 @@ export default buildConfig({
     BlogPage,
     Impressum,
     Datenschutzerklarung,
-    PagesGlobal
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
