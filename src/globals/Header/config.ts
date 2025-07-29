@@ -14,6 +14,39 @@ export const Header: GlobalConfig = {
       required: false,
     },
     {
+      name: 'link',
+      type: 'group',
+      label: 'Link',
+      fields: [
+        {
+          name: 'Kontakt label',
+          type: 'text',
+          label: 'Link Label',
+        },
+        {
+          name: 'url',
+          type: 'text',
+          label: 'URL',
+        },
+        {
+          name: 'target',
+          type: 'select',
+          label: 'Target',
+          options: [
+            {
+              label: 'Same Tab',
+              value: '_self',
+            },
+            {
+              label: 'New Tab',
+              value: '_blank',
+            },
+          ],
+          defaultValue: '_self',
+        },
+      ],
+    },
+    {
       name: 'type',
       type: 'select',
       defaultValue: 'lowImpact',
