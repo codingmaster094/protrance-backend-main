@@ -1,6 +1,6 @@
 import type { User , Media , Post } from "@/payload-types";
 
-export const Schema = (props) => {
+export const Schema = (props:Post) => {
     const image =  props.seo?.meta?.image
 return {
     "@context": "https://schema.org",
