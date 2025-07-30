@@ -23,6 +23,8 @@
     try {
       const globalData = await payload.findGlobal({ slug: globalConfig.slug });
       if (globalData && globalConfig.slug !== undefined) {
+        console.log("globalConfig" , globalConfig)
+        console.log("globalData" , globalData)
         return {
           url: `${url}/${globalConfig.slug}`,
           lastModified: new Date(globalData.updatedAt),
@@ -35,9 +37,6 @@
     return null;
   })
 );
-
-
-
 
   const sitemapUrls: { url: string; lastModified: Date }[] = [
     ...posts.docs.map(({ slug, updatedAt }) => ({
