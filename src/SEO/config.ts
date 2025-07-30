@@ -6,8 +6,6 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { Schema } from '@/components/schema'
-
 
 export const SEO: Field = {
   name: 'seo',
@@ -16,7 +14,7 @@ export const SEO: Field = {
     {
       name: 'meta',
       label: 'SEO',
-      type: 'group', 
+      type: 'group',
       fields: [
         MetaTitleField({ hasGenerateFn: true }),
         MetaDescriptionField({ hasGenerateFn: true }),
@@ -26,7 +24,9 @@ export const SEO: Field = {
           label: 'Canonical URL',
           type: 'text',
           hooks: {
-            beforeChange: [async ({ value }) => (value ? value : process.env.BASE_DOAMAIN)],
+            beforeChange: [
+              async ({ value }) => value || process.env.BASE_DOMAIN,
+            ],
           },
         },
         PreviewField({ hasGenerateFn: true }),
@@ -36,6 +36,29 @@ export const SEO: Field = {
           imagePath: 'meta.image',
         }),
       ],
+    },
+    {
+      name: 'structuredData',
+      type: 'json',
+      admin: {
+        hidden: true,
+      },
+      hooks: {
+        afterRead: [
+          ({ siblingData }) => {
+            const meta = siblingData?.meta || {}
+            const structuredData = {
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: meta.title,
+              description: meta.description,
+              url: meta.canonicalUrl,
+              image: meta.image?.url,
+            }
+            return structuredData
+          },
+        ],
+      },
     },
   ],
   label: false,
