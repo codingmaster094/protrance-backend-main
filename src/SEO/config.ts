@@ -6,6 +6,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { Schema } from '@/components/schema'
 
 
 export const SEO: Field = {
