@@ -5,9 +5,11 @@ import {
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
+  BlocksFeature,
   //   UnorderedListFeature, // This enables <ul>
   //   OrderedListFeature, // This enables <ol>
 } from '@payloadcms/richtext-lexical'
+import { TableOfContent } from '@/blocks/TableOfContent/config'
 
 export const Hero: Field = {
   name: 'hero',
@@ -61,44 +63,18 @@ export const Hero: Field = {
       type: 'text',
     },
     {
-      name: 'type',
-      type: 'select',
-      defaultValue: 'lowImpact',
-      label: 'Type',
-      options: [
-        {
-          label: 'None',
-          value: 'none',
-        },
-        {
-          label: 'High Impact',
-          value: 'highImpact',
-        },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
-        },
-      ],
-      required: true,
-    },
-    {
       name: 'richText',
       type: 'richText',
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          BlocksFeature({
+            blocks:[TableOfContent]
+          }),
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
-            // UnorderedListFeature({ enabledUnorderList: ['ul'] }),
-            // OrderedListFeature({ enabledOrderList: ['ol'] }),
-          ]
-        },
+        ],
       }),
       label: false,
     },
@@ -134,6 +110,31 @@ export const Hero: Field = {
           defaultValue: '_self',
         },
       ],
+    },
+    {
+      name: 'type',
+      type: 'select',
+      defaultValue: 'lowImpact',
+      label: 'Type',
+      options: [
+        {
+          label: 'None',
+          value: 'none',
+        },
+        {
+          label: 'High Impact',
+          value: 'highImpact',
+        },
+        {
+          label: 'Medium Impact',
+          value: 'mediumImpact',
+        },
+        {
+          label: 'Low Impact',
+          value: 'lowImpact',
+        },
+      ],
+      required: true,
     },
     {
       name: 'media',

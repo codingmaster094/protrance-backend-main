@@ -104,6 +104,7 @@ export interface Config {
     blog: Blog;
     impressum: Impressum;
     datenschutzerklarung: Datenschutzerklarung;
+    robots: Robot;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -121,6 +122,7 @@ export interface Config {
     blog: BlogSelect<false> | BlogSelect<true>;
     impressum: ImpressumSelect<false> | ImpressumSelect<true>;
     datenschutzerklarung: DatenschutzerklarungSelect<false> | DatenschutzerklarungSelect<true>;
+    robots: RobotsSelect<false> | RobotsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -209,7 +211,6 @@ export interface Post {
     Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
       root: {
         type: string;
@@ -230,6 +231,7 @@ export interface Post {
       url?: string | null;
       target?: ('_self' | '_blank') | null;
     };
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     media?: (string | null) | Media;
   };
   partnerlogo?: {
@@ -509,7 +511,6 @@ export interface PostsSelect<T extends boolean = true> {
         Image_Position?: T;
         heroImage?: T;
         text?: T;
-        type?: T;
         richText?: T;
         link?:
           | T
@@ -518,6 +519,7 @@ export interface PostsSelect<T extends boolean = true> {
               url?: T;
               target?: T;
             };
+        type?: T;
         media?: T;
       };
   partnerlogo?:
@@ -820,7 +822,6 @@ export interface Home {
     Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
       root: {
         type: string;
@@ -841,6 +842,7 @@ export interface Home {
       url?: string | null;
       target?: ('_self' | '_blank') | null;
     };
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     media?: (string | null) | Media;
   };
   abouts?: {
@@ -1312,7 +1314,6 @@ export interface Abnehman {
     Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
       root: {
         type: string;
@@ -1333,6 +1334,7 @@ export interface Abnehman {
       url?: string | null;
       target?: ('_self' | '_blank') | null;
     };
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     media?: (string | null) | Media;
   };
   partnerlogo?: {
@@ -1615,7 +1617,6 @@ export interface Entspannung_StressabbauPage {
     Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
       root: {
         type: string;
@@ -1636,6 +1637,7 @@ export interface Entspannung_StressabbauPage {
       url?: string | null;
       target?: ('_self' | '_blank') | null;
     };
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     media?: (string | null) | Media;
   };
   partnerlogo?: {
@@ -1939,7 +1941,6 @@ export interface Lampenfieber_Prufungsangst {
     Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
       root: {
         type: string;
@@ -1960,6 +1961,7 @@ export interface Lampenfieber_Prufungsangst {
       url?: string | null;
       target?: ('_self' | '_blank') | null;
     };
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     media?: (string | null) | Media;
   };
   partnerlogo?: {
@@ -2256,7 +2258,6 @@ export interface Raucherentwohnung {
     Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
       root: {
         type: string;
@@ -2277,6 +2278,7 @@ export interface Raucherentwohnung {
       url?: string | null;
       target?: ('_self' | '_blank') | null;
     };
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     media?: (string | null) | Media;
   };
   partnerlogo?: {
@@ -2574,7 +2576,6 @@ export interface Selbstfursorge {
     Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
       root: {
         type: string;
@@ -2595,6 +2596,7 @@ export interface Selbstfursorge {
       url?: string | null;
       target?: ('_self' | '_blank') | null;
     };
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     media?: (string | null) | Media;
   };
   partnerlogo?: {
@@ -2892,7 +2894,6 @@ export interface Kontakt {
     Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
       root: {
         type: string;
@@ -2913,6 +2914,7 @@ export interface Kontakt {
       url?: string | null;
       target?: ('_self' | '_blank') | null;
     };
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     media?: (string | null) | Media;
   };
   Kontaktmöglichkeiten?: {
@@ -3020,7 +3022,6 @@ export interface UberMich {
     Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
       root: {
         type: string;
@@ -3041,6 +3042,7 @@ export interface UberMich {
       url?: string | null;
       target?: ('_self' | '_blank') | null;
     };
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     media?: (string | null) | Media;
   };
   partnerlogo?: {
@@ -3378,7 +3380,6 @@ export interface Blog {
     Image_Position: 'top' | 'middle' | 'bottam';
     heroImage?: (string | null) | Media;
     text?: string | null;
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText?: {
       root: {
         type: string;
@@ -3399,6 +3400,7 @@ export interface Blog {
       url?: string | null;
       target?: ('_self' | '_blank') | null;
     };
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     media?: (string | null) | Media;
   };
   partnerlogo?: {
@@ -3566,6 +3568,16 @@ export interface Datenschutzerklarung {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "robots".
+ */
+export interface Robot {
+  id: string;
+  robots?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -3715,7 +3727,6 @@ export interface HomeSelect<T extends boolean = true> {
         Image_Position?: T;
         heroImage?: T;
         text?: T;
-        type?: T;
         richText?: T;
         link?:
           | T
@@ -3724,6 +3735,7 @@ export interface HomeSelect<T extends boolean = true> {
               url?: T;
               target?: T;
             };
+        type?: T;
         media?: T;
       };
   abouts?:
@@ -3972,7 +3984,6 @@ export interface AbnehmenSelect<T extends boolean = true> {
         Image_Position?: T;
         heroImage?: T;
         text?: T;
-        type?: T;
         richText?: T;
         link?:
           | T
@@ -3981,6 +3992,7 @@ export interface AbnehmenSelect<T extends boolean = true> {
               url?: T;
               target?: T;
             };
+        type?: T;
         media?: T;
       };
   partnerlogo?:
@@ -4134,7 +4146,6 @@ export interface Entspannung_StressabbauPageSelect<T extends boolean = true> {
         Image_Position?: T;
         heroImage?: T;
         text?: T;
-        type?: T;
         richText?: T;
         link?:
           | T
@@ -4143,6 +4154,7 @@ export interface Entspannung_StressabbauPageSelect<T extends boolean = true> {
               url?: T;
               target?: T;
             };
+        type?: T;
         media?: T;
       };
   partnerlogo?:
@@ -4305,7 +4317,6 @@ export interface Lampenfieber_PrufungsangstSelect<T extends boolean = true> {
         Image_Position?: T;
         heroImage?: T;
         text?: T;
-        type?: T;
         richText?: T;
         link?:
           | T
@@ -4314,6 +4325,7 @@ export interface Lampenfieber_PrufungsangstSelect<T extends boolean = true> {
               url?: T;
               target?: T;
             };
+        type?: T;
         media?: T;
       };
   partnerlogo?:
@@ -4469,7 +4481,6 @@ export interface RaucherentwohnungSelect<T extends boolean = true> {
         Image_Position?: T;
         heroImage?: T;
         text?: T;
-        type?: T;
         richText?: T;
         link?:
           | T
@@ -4478,6 +4489,7 @@ export interface RaucherentwohnungSelect<T extends boolean = true> {
               url?: T;
               target?: T;
             };
+        type?: T;
         media?: T;
       };
   partnerlogo?:
@@ -4634,7 +4646,6 @@ export interface SelbstfursorgeSelect<T extends boolean = true> {
         Image_Position?: T;
         heroImage?: T;
         text?: T;
-        type?: T;
         richText?: T;
         link?:
           | T
@@ -4643,6 +4654,7 @@ export interface SelbstfursorgeSelect<T extends boolean = true> {
               url?: T;
               target?: T;
             };
+        type?: T;
         media?: T;
       };
   partnerlogo?:
@@ -4799,7 +4811,6 @@ export interface KontaktSelect<T extends boolean = true> {
         Image_Position?: T;
         heroImage?: T;
         text?: T;
-        type?: T;
         richText?: T;
         link?:
           | T
@@ -4808,6 +4819,7 @@ export interface KontaktSelect<T extends boolean = true> {
               url?: T;
               target?: T;
             };
+        type?: T;
         media?: T;
       };
   Kontaktmöglichkeiten?:
@@ -4886,7 +4898,6 @@ export interface UberMichSelect<T extends boolean = true> {
         Image_Position?: T;
         heroImage?: T;
         text?: T;
-        type?: T;
         richText?: T;
         link?:
           | T
@@ -4895,6 +4906,7 @@ export interface UberMichSelect<T extends boolean = true> {
               url?: T;
               target?: T;
             };
+        type?: T;
         media?: T;
       };
   partnerlogo?:
@@ -5063,7 +5075,6 @@ export interface BlogSelect<T extends boolean = true> {
         Image_Position?: T;
         heroImage?: T;
         text?: T;
-        type?: T;
         richText?: T;
         link?:
           | T
@@ -5072,6 +5083,7 @@ export interface BlogSelect<T extends boolean = true> {
               url?: T;
               target?: T;
             };
+        type?: T;
         media?: T;
       };
   partnerlogo?:
@@ -5195,6 +5207,16 @@ export interface DatenschutzerklarungSelect<T extends boolean = true> {
             };
       };
   publishedDate?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "robots_select".
+ */
+export interface RobotsSelect<T extends boolean = true> {
+  robots?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -2,7 +2,8 @@ import type { Field } from 'payload'
 
 import {
   lexicalEditor,
-  lexicalHTMLField
+  lexicalHTMLField,
+  EXPERIMENTAL_TableFeature
 } from '@payloadcms/richtext-lexical'
 
 export const Contents: Field = {
@@ -12,7 +13,12 @@ export const Contents: Field = {
     {
       name: 'Gutenberg',
       type: 'richText',
-      editor: lexicalEditor(),
+     editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          EXPERIMENTAL_TableFeature(), 
+        ],
+      }),
     },
     lexicalHTMLField({
       htmlFieldName: 'Gutenberg_html',
