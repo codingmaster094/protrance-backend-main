@@ -22,12 +22,16 @@ export async function GET() {
   (config.globals || []).map(async (globalConfig) => {
     try {
       const globalData = await payload.findGlobal({ slug: globalConfig.slug });
-
-      if (globalData && globalData.slug) {
-        return {
-          url: `${url}/${globalConfig.slug}`, // Use config's slug for the URL
-          lastModified: new Date(globalData.updatedAt),
-        };
+      if(globalData.slug !=undefined){
+        console.log('globalData', globalData.slug)
+      }
+      if (globalData) {
+         if(globalData.slug !=undefined){
+           return {
+             url: `${url}/${globalConfig.slug}`, // Use config's slug for the URL
+             lastModified: new Date(globalData.updatedAt),
+           };
+         }
       }
 
     } catch (error) {
