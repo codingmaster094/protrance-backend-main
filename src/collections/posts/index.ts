@@ -22,6 +22,15 @@ export const Posts: CollectionConfig = {
   },
   fields: [
     {
+        name: 'authors',
+        type: 'relationship',
+        relationTo: 'users',
+        hasMany: true,
+        admin: {
+            position: 'sidebar'
+        }
+    },
+    {
       name: 'title',
       type: 'text',
       required: true,

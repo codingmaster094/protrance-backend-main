@@ -27,8 +27,13 @@ export const KontaktPage: GlobalConfig = {
       },
       hooks: {
         beforeValidate: [
-          ({ value, siblingData }) => value || slugify(siblingData.title, { lower: true }),
-        ],
+  ({ siblingData, originalDoc }) => {
+    if (siblingData?.title && siblingData.title !== originalDoc?.title) {
+      return slugify(siblingData.title, { lower: true });
+    }
+  },
+]
+,
       },
     },
     {

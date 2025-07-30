@@ -7,6 +7,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 
+
 export const SEO: Field = {
   name: 'seo',
   type: 'group',

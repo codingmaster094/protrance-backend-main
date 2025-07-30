@@ -23,7 +23,7 @@ export async function GET() {
     try {
       const globalData = await payload.findGlobal({ slug: globalConfig.slug });
 
-      if (globalData && globalData.updatedAt) {
+      if (globalData && globalData.slug) {
         return {
           url: `${url}/${globalConfig.slug}`, // Use config's slug for the URL
           lastModified: new Date(globalData.updatedAt),

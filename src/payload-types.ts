@@ -186,6 +186,7 @@ export interface Media {
   title?: string | null;
   slug: string;
   alt: string;
+  creditText: string;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -204,6 +205,7 @@ export interface Media {
  */
 export interface Post {
   id: string;
+  authors?: (string | User)[] | null;
   title: string;
   slug: string;
   hero: {
@@ -485,6 +487,7 @@ export interface MediaSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   alt?: T;
+  creditText?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -502,6 +505,7 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
+  authors?: T;
   title?: T;
   slug?: T;
   hero?:

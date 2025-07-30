@@ -32,5 +32,10 @@ import slugify from 'slugify'
         type: 'text',
         required: true,
       },
+      {
+            name: 'creditText',
+            type: 'text',
+            required: true,
+        },
     ],
   }
