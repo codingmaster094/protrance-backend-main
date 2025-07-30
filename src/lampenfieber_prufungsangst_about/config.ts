@@ -1,3 +1,4 @@
+import { EXPERIMENTAL_TableFeature, FixedToolbarFeature, HeadingFeature, InlineToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import type { Field } from 'payload'
 
 export const abouts: Field = {
@@ -12,7 +13,16 @@ export const abouts: Field = {
     {
       name: 'main_description',
       type: 'richText',
-      label: 'Main Description',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
     },
     {
       name: 'aboutsImage',
@@ -29,17 +39,44 @@ export const abouts: Field = {
     {
       name: 'description1',
       type: 'richText',
-      label: 'Description-1',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
     },
     {
       name: 'subdescription',
       type: 'richText',
-      label: 'List Content',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
     },
     {
       name: 'description2',
       type: 'richText',
-      label: 'Description-2',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
     },
     {
       name: 'type',

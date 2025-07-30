@@ -1,6 +1,7 @@
 import type { Field } from 'payload'
 
 import {
+  EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
@@ -19,7 +20,16 @@ export const service2: Field = {
     {
       name: 'description',
       type: 'richText',
-      label: 'Description',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
     },
     {
       name: 'nestedService',
@@ -42,10 +52,19 @@ export const service2: Field = {
               required: false,
             },
             {
-              name: 'description',
-              type: 'richText',
-              label: 'Description',
-            },
+      name: 'description',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
+    },
           ],
         },
       ],
@@ -86,6 +105,7 @@ export const service2: Field = {
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
+             EXPERIMENTAL_TableFeature()
           ]
         },
       }),

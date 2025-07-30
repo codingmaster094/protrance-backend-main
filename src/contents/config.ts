@@ -3,7 +3,10 @@ import type { Field } from 'payload'
 import {
   lexicalEditor,
   lexicalHTMLField,
-  EXPERIMENTAL_TableFeature
+  EXPERIMENTAL_TableFeature,
+  HeadingFeature,
+  FixedToolbarFeature,
+  InlineToolbarFeature
 } from '@payloadcms/richtext-lexical'
 
 export const Contents: Field = {
@@ -13,12 +16,16 @@ export const Contents: Field = {
     {
       name: 'Gutenberg',
       type: 'richText',
-     editor: lexicalEditor({
+      editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
-          EXPERIMENTAL_TableFeature(), 
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
         ],
       }),
+      label: false,
     },
     lexicalHTMLField({
       htmlFieldName: 'Gutenberg_html',

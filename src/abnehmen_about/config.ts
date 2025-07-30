@@ -1,6 +1,7 @@
 import type { Field } from 'payload'
 
 import {
+  EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
@@ -26,7 +27,16 @@ export const abouts: Field = {
     {
       name: 'description',
       type: 'richText',
-      label: 'Description',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
     },
     {
       name: 'nestedSections',
@@ -49,10 +59,19 @@ export const abouts: Field = {
               required: false,
             },
             {
-              name: 'description',
-              type: 'richText',
-              label: 'Description',
-            },
+      name: 'description',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
+    },
           ],
         },
       ],
@@ -86,14 +105,13 @@ export const abouts: Field = {
       name: 'richText',
       type: 'richText',
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
-          ]
-        },
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
       }),
       label: false,
     },

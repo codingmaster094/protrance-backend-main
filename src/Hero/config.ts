@@ -6,11 +6,10 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
   EXPERIMENTAL_TableFeature,
-  BlocksFeature,
   //   UnorderedListFeature, // This enables <ul>
   //   OrderedListFeature, // This enables <ol>
 } from '@payloadcms/richtext-lexical'
-import { TableOfContent } from '@/blocks/TableOfContent/config'
+
 
 export const Hero: Field = {
   name: 'hero',
@@ -69,9 +68,6 @@ export const Hero: Field = {
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
-          BlocksFeature({
-            blocks:[TableOfContent]
-          }),
           HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),

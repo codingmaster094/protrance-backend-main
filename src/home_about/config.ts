@@ -1,6 +1,7 @@
 import type { Field } from 'payload'
 
 import {
+  EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
@@ -26,6 +27,8 @@ export const abouts: Field = {
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
+            EXPERIMENTAL_TableFeature()
+
           ]
         },
       }),
@@ -39,7 +42,16 @@ export const abouts: Field = {
     {
       name: 'subDescription',
       type: 'richText',
-      label: 'Sub Description',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
     },
     {
       name: 'ulLi',
@@ -52,6 +64,7 @@ export const abouts: Field = {
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
+            EXPERIMENTAL_TableFeature()
           ]
         },
       }),
@@ -110,10 +123,19 @@ export const abouts: Field = {
               required: false,
             },
             {
-              name: 'description',
-              type: 'richText',
-              label: 'Description',
-            },
+      name: 'description',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
+    },
           ],
         },
       ],

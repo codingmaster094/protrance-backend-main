@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { revalidateReviews } from './hooks/revalidateReviews'
 import {
+  EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
@@ -27,6 +28,7 @@ export const Reviews: GlobalConfig = {
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
+             EXPERIMENTAL_TableFeature()
           ]
         },
       }),
@@ -98,10 +100,19 @@ export const Reviews: GlobalConfig = {
               required: false,
             },
             {
-              name: 'description',
-              type: 'richText',
-              label: 'Description',
-            },
+      name: 'description',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
+    },
             {
               name: 'reviewImage',
               type: 'upload',

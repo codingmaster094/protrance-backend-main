@@ -1,3 +1,4 @@
+import { EXPERIMENTAL_TableFeature, FixedToolbarFeature, HeadingFeature, InlineToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import type { Field } from 'payload'
 export const faq: Field = {
   name: 'faq',
@@ -28,10 +29,19 @@ export const faq: Field = {
               required: false,
             },
             {
-              name: 'description',
-              type: 'richText',
-              label: 'Description',
-            }
+      name: 'description',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+        ],
+      }),
+      label: false,
+    }
             // Add more fields here as needed
           ],
         },

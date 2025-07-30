@@ -1,6 +1,7 @@
 import type { Field } from 'payload'
 
 import {
+  EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
@@ -26,6 +27,7 @@ export const Kontaktmoglichkeiten: Field = {
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
+            EXPERIMENTAL_TableFeature()
             // UnorderedListFeature({ enabledUnorderList: ['ul'] }),
             // OrderedListFeature({ enabledOrderList: ['ol'] }),
           ]
