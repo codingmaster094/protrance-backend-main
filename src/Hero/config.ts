@@ -5,6 +5,7 @@ import {
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
+  EXPERIMENTAL_TableFeature,
   BlocksFeature,
   //   UnorderedListFeature, // This enables <ul>
   //   OrderedListFeature, // This enables <ol>
@@ -74,6 +75,7 @@ export const Hero: Field = {
           HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
         ],
       }),
       label: false,

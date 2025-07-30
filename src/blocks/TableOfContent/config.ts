@@ -8,6 +8,10 @@ export const TableOfContent: Block = { //
     }, //
     fields: [
         {
+            name:"Table_content",
+            type:"array",
+            fields:[
+                {
             name: 'column1',
             type: 'text',
             label: 'Column 1',
@@ -21,6 +25,8 @@ export const TableOfContent: Block = { //
             name: 'column3',
             type: 'text',
             label: 'Column 3',
+        }
+            ]
         },
     ],
 };
