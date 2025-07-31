@@ -32,10 +32,14 @@ export default buildConfig({
   serverURL: 'https://protrance-backend-main.vercel.app',
   admin: {
     user: Users.slug,
+    components: {
+      graphics: {
+        Logo: './src/components/graphics/CustomLogo',
+      },
+    },
   },
-  cors: [
-    'https://protrance-backend-main.vercel.app'],
-  collections: [Users, Media, Posts , Pages],
+  cors: ['https://protrance-backend-main.vercel.app'],
+  collections: [Users, Media, Posts, Pages],
   globals: [
     Header,
     Footer,
@@ -52,7 +56,7 @@ export default buildConfig({
     BlogPage,
     Impressum,
     Datenschutzerklarung,
-    Robots
+    Robots,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -65,11 +69,11 @@ export default buildConfig({
   sharp,
   plugins: [
     vercelBlobStorage({
-            enabled: true, 
-            collections: {
-                media: true, 
-            },
-            token: process.env.BLOB_READ_WRITE_TOKEN, 
-        }),
+      enabled: true,
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    }),
   ],
 })
