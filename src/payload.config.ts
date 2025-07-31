@@ -32,6 +32,15 @@ export default buildConfig({
   serverURL: 'https://protrance-backend-main.vercel.app',
   admin: {
     user: Users.slug,
+    meta: {
+      icons: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          url: '/images/favicon.png',
+        },
+      ],
+    },
     components: {
       graphics: {
         Logo: './src/components/graphics/CustomLogo',
