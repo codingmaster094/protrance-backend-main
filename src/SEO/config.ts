@@ -49,7 +49,7 @@ export const SEO: Field = {
             const meta = siblingData?.meta || {}
             const structuredData = {
               '@context': 'https://schema.org',
-              '@type': 'WebPage',
+              '@type': 'Place',
               name: meta.title,
               description: meta.description,
               url: meta.canonicalUrl,

@@ -374,6 +374,15 @@ export interface Post {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedDate?: string | null;
   updatedAt: string;
@@ -611,6 +620,7 @@ export interface PostsSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedDate?: T;
   updatedAt?: T;
@@ -1300,6 +1310,15 @@ export interface Home {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedAt?: string | null;
   updatedAt?: string | null;
@@ -1603,6 +1622,15 @@ export interface Abnehman {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedAt?: string | null;
   updatedAt?: string | null;
@@ -1927,6 +1955,15 @@ export interface Entspannung_StressabbauPage {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedAt?: string | null;
   updatedAt?: string | null;
@@ -2244,6 +2281,15 @@ export interface Lampenfieber_Prufungsangst {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedAt?: string | null;
   updatedAt?: string | null;
@@ -2562,6 +2608,15 @@ export interface Raucherentwohnung {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedAt?: string | null;
   updatedAt?: string | null;
@@ -2880,6 +2935,15 @@ export interface Selbstfursorge {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedAt?: string | null;
   updatedAt?: string | null;
@@ -3005,6 +3069,15 @@ export interface Kontakt {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   Reviews?: {
     enableReviews?: boolean | null;
@@ -3366,6 +3439,15 @@ export interface UberMich {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedAt?: string | null;
   updatedAt?: string | null;
@@ -3477,6 +3559,15 @@ export interface Blog {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedAt?: string | null;
   updatedAt?: string | null;
@@ -3521,6 +3612,15 @@ export interface Impressum {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedDate?: string | null;
   updatedAt?: string | null;
@@ -3565,6 +3665,15 @@ export interface Datenschutzerklarung {
       image?: (string | null) | Media;
       canonicalUrl?: string | null;
     };
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   publishedDate?: string | null;
   updatedAt?: string | null;
@@ -3968,6 +4077,7 @@ export interface HomeSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedAt?: T;
   updatedAt?: T;
@@ -4130,6 +4240,7 @@ export interface AbnehmenSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedAt?: T;
   updatedAt?: T;
@@ -4301,6 +4412,7 @@ export interface Entspannung_StressabbauPageSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedAt?: T;
   updatedAt?: T;
@@ -4465,6 +4577,7 @@ export interface Lampenfieber_PrufungsangstSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedAt?: T;
   updatedAt?: T;
@@ -4630,6 +4743,7 @@ export interface RaucherentwohnungSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedAt?: T;
   updatedAt?: T;
@@ -4795,6 +4909,7 @@ export interface SelbstfursorgeSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedAt?: T;
   updatedAt?: T;
@@ -4877,6 +4992,7 @@ export interface KontaktSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   Reviews?:
     | T
@@ -5059,6 +5175,7 @@ export interface UberMichSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedAt?: T;
   updatedAt?: T;
@@ -5143,6 +5260,7 @@ export interface BlogSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedAt?: T;
   updatedAt?: T;
@@ -5176,6 +5294,7 @@ export interface ImpressumSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedDate?: T;
   updatedAt?: T;
@@ -5209,6 +5328,7 @@ export interface DatenschutzerklarungSelect<T extends boolean = true> {
               image?: T;
               canonicalUrl?: T;
             };
+        structuredData?: T;
       };
   publishedDate?: T;
   updatedAt?: T;
