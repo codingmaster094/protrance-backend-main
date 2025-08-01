@@ -169,6 +169,5 @@ export const abouts: Field = {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
       },
     },
-  ],
-  label: false,
+  ]
 }
