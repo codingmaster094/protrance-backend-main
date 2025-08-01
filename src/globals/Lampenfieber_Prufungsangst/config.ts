@@ -43,14 +43,15 @@ export const Lampenfieber_PrufungsangstPage: GlobalConfig = {
         de: 'Kurzlink',
       },
       hooks: {
-        beforeValidate: [
-          ({ siblingData, originalDoc }) => {
-            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-              return slugify(siblingData.title, { lower: true });
-            }
-          },
-        ],
-      },
+              beforeValidate: [
+                ({ siblingData, value }) => {
+                  if (siblingData?.title) {
+                    return slugify(siblingData.title, { lower: true })
+                  }
+                  return value
+                },
+              ],
+            },
     },
     {
       type: 'tabs',

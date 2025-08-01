@@ -43,12 +43,13 @@ export const Uber_michPage: GlobalConfig = {
       admin: {
         readOnly: true,
       },
-      hooks: {
+     hooks: {
         beforeValidate: [
-          ({ siblingData, originalDoc }) => {
-            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
+          ({ siblingData, value }) => {
+            if (siblingData?.title) {
               return slugify(siblingData.title, { lower: true })
             }
+            return value
           },
         ],
       },

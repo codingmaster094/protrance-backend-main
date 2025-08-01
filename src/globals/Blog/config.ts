@@ -40,10 +40,11 @@ export const BlogPage: GlobalConfig = {
       },
       hooks: {
         beforeValidate: [
-          ({ siblingData, originalDoc }) => {
-            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-              return slugify(siblingData.title, { lower: true });
+          ({ siblingData, value }) => {
+            if (siblingData?.title) {
+              return slugify(siblingData.title, { lower: true })
             }
+            return value
           },
         ],
       },
