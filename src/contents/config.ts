@@ -1,31 +1,38 @@
 import type { Field } from 'payload'
-
 import {
   lexicalEditor,
   lexicalHTMLField,
   EXPERIMENTAL_TableFeature,
   HeadingFeature,
   FixedToolbarFeature,
-  InlineToolbarFeature
+  InlineToolbarFeature,
 } from '@payloadcms/richtext-lexical'
 
 export const Contents: Field = {
   name: 'contents',
   type: 'group',
+  label: {
+    en: 'Contents',
+    de: 'Inhalte',
+  },
   fields: [
     {
       name: 'Gutenberg',
       type: 'richText',
+      localized: true,
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
         ],
       }),
-      label: false,
+      label: {
+        en: 'Content (Gutenberg)',
+        de: 'Inhalt (Gutenberg)',
+      },
     },
     lexicalHTMLField({
       htmlFieldName: 'Gutenberg_html',
@@ -34,7 +41,10 @@ export const Contents: Field = {
     {
       name: 'Featured_image',
       type: 'upload',
-      label: 'Featured Image',
+      label: {
+        en: 'Featured Image',
+        de: 'Beitragsbild',
+      },
       relationTo: 'media',
       required: false,
     },
@@ -42,22 +52,25 @@ export const Contents: Field = {
       name: 'type',
       type: 'select',
       defaultValue: 'lowImpact',
-      label: 'Type',
+      label: {
+        en: 'Type',
+        de: 'Typ',
+      },
       options: [
         {
-          label: 'None',
+          label: { en: 'None', de: 'Keine' },
           value: 'none',
         },
         {
-          label: 'High Impact',
+          label: { en: 'High Impact', de: 'Starke Wirkung' },
           value: 'highImpact',
         },
         {
-          label: 'Medium Impact',
+          label: { en: 'Medium Impact', de: 'Mittlere Wirkung' },
           value: 'mediumImpact',
         },
         {
-          label: 'Low Impact',
+          label: { en: 'Low Impact', de: 'Geringe Wirkung' },
           value: 'lowImpact',
         },
       ],
@@ -66,12 +79,16 @@ export const Contents: Field = {
     {
       name: 'media',
       type: 'upload',
+      label: {
+        en: 'Conditional Media',
+        de: 'Bedingte Medien',
+      },
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) =>
+          ['highImpact', 'mediumImpact'].includes(type),
       },
       relationTo: 'media',
       required: false,
     },
   ],
-  label: false,
 }

@@ -4,6 +4,10 @@ import slugify from 'slugify'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
+  label: {
+    en: 'Footer',
+    de: 'Fußzeile',
+  },
   access: {
     read: () => true,
   },
@@ -12,6 +16,10 @@ export const Footer: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',
@@ -21,121 +29,181 @@ export const Footer: GlobalConfig = {
       admin: {
         readOnly: true,
       },
+      label: {
+        en: 'Slug',
+        de: 'Kurzlink',
+      },
       hooks: {
         beforeValidate: [
-  ({ siblingData, originalDoc }) => {
-    if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-      return slugify(siblingData.title, { lower: true });
-    }
-  },
-]
-,
+          ({ siblingData, originalDoc }) => {
+            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
+              return slugify(siblingData.title, { lower: true });
+            }
+          },
+        ],
       },
     },
     {
       name: 'footerlogo',
       type: 'upload',
-      label: 'Logo',
+      label: {
+        en: 'Footer Logo',
+        de: 'Fußzeilen-Logo',
+      },
       relationTo: 'media',
       required: false,
     },
     {
       name: 'description',
       type: 'textarea',
-      label: 'Footer Beschreibung',
+      label: {
+        en: 'Footer Description',
+        de: 'Footer Beschreibung',
+      },
     },
     {
       name: 'sprechzeiten',
-      label: 'Sprechzeiten',
+      label: {
+        en: 'Opening Hours',
+        de: 'Sprechzeiten',
+      },
       type: 'array',
       fields: [
         {
           name: 'day',
           type: 'text',
-          label: 'Tag',
+          label: {
+            en: 'Day',
+            de: 'Tag',
+          },
         },
         {
           name: 'time',
           type: 'text',
-          label: 'Uhrzeit',
+          label: {
+            en: 'Time',
+            de: 'Uhrzeit',
+          },
         },
       ],
     },
     {
       name: 'kontakt',
-      label: 'Kontakt',
+      label: {
+        en: 'Contact',
+        de: 'Kontakt',
+      },
       type: 'group',
       fields: [
         {
           name: 'phone',
           type: 'text',
-          label: 'Telefonnummer',
+          label: {
+            en: 'Phone Number',
+            de: 'Telefonnummer',
+          },
         },
         {
           name: 'phone_url',
           type: 'text',
-          label: 'Phone URL',
+          label: {
+            en: 'Phone URL',
+            de: 'Telefon URL',
+          },
         },
         {
           name: 'email',
           type: 'text',
-          label: 'E-Mail',
+          label: {
+            en: 'Email',
+            de: 'E-Mail',
+          },
         },
         {
           name: 'email_url',
           type: 'text',
-          label: 'Email URL',
+          label: {
+            en: 'Email URL',
+            de: 'E-Mail URL',
+          },
         },
         {
           name: 'address',
           type: 'textarea',
-          label: 'Adresse',
+          label: {
+            en: 'Address',
+            de: 'Adresse',
+          },
         },
         {
           name: 'address_url',
           type: 'text',
-          label: 'Address URL',
+          label: {
+            en: 'Address URL',
+            de: 'Adresse URL',
+          },
         },
       ],
     },
     {
       name: 'navigationLinks',
-      label: 'Navigation',
+      label: {
+        en: 'Navigation',
+        de: 'Navigation',
+      },
       type: 'array',
       fields: [
         {
           name: 'label',
           type: 'text',
-          label: 'Linktext',
+          label: {
+            en: 'Link Label',
+            de: 'Linktext',
+          },
         },
         {
           name: 'url',
           type: 'text',
-          label: 'URL',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
         },
       ],
     },
     {
       name: 'legalLinks',
-      label: 'Rechtliches',
+      label: {
+        en: 'Legal',
+        de: 'Rechtliches',
+      },
       type: 'array',
       fields: [
         {
           name: 'label',
           type: 'text',
-          label: 'Linktext',
+          label: {
+            en: 'Link Label',
+            de: 'Linktext',
+          },
         },
         {
           name: 'url',
           type: 'text',
-          label: 'URL',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
         },
       ],
     },
     {
       name: 'copyright',
       type: 'text',
-      label: 'Copyright Text',
+      label: {
+        en: 'Copyright Text',
+        de: 'Copyright Text',
+      },
     },
   ],
   hooks: {

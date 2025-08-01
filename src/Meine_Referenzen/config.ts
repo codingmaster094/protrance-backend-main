@@ -1,44 +1,52 @@
-import type { Field } from 'payload'
-
+import type { Field } from 'payload';
 import {
   EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+} from '@payloadcms/richtext-lexical';
 
 export const Meine_Referenzen: Field = {
   name: 'Meine_Referenzen',
   type: 'group',
+  label: {
+    en: 'My References',
+    de: 'Meine Referenzen',
+  },
   fields: [
     {
       name: 'title',
       type: 'text',
-      required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'description',
       type: 'richText',
+      label: {
+        en: 'Description',
+        de: 'Beschreibung',
+      },
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-            EXPERIMENTAL_TableFeature()
-            // UnorderedListFeature({ enabledUnorderList: ['ul'] }),
-            // OrderedListFeature({ enabledOrderList: ['ol'] }),
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
       name: 'nestedMeine_Referenzen',
       type: 'array',
-      label: 'Nested Meine_Referenzen',
+      label: {
+        en: 'Nested References',
+        de: 'Verschachtelte Referenzen',
+      },
       fields: [
         {
           type: 'group',
@@ -46,121 +54,124 @@ export const Meine_Referenzen: Field = {
             {
               name: 'Meine_ReferenzenImage',
               type: 'upload',
-              label: 'Meine_Referenzen Image',
+              label: {
+                en: 'Reference Image',
+                de: 'Referenzbild',
+              },
               relationTo: 'media',
-              required: false,
             },
             {
               name: 'title',
               type: 'text',
-              required: false,
+              label: {
+                en: 'Title',
+                de: 'Titel',
+              },
             },
             {
-      name: 'description',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-            EXPERIMENTAL_TableFeature()
-            // UnorderedListFeature({ enabledUnorderList: ['ul'] }),
-            // OrderedListFeature({ enabledOrderList: ['ol'] }),
-          ]
-        },
-      }),
-      label: false,
-    },
+              name: 'description',
+              type: 'richText',
+              label: {
+                en: 'Description',
+                de: 'Beschreibung',
+              },
+              editor: lexicalEditor({
+                features: ({ rootFeatures }) => [
+                  ...rootFeatures,
+                  HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                  FixedToolbarFeature(),
+                  InlineToolbarFeature(),
+                  EXPERIMENTAL_TableFeature(),
+                ],
+              }),
+            },
           ],
         },
       ],
     },
-
     {
       name: 'type',
       type: 'select',
       defaultValue: 'lowImpact',
-      label: 'Type',
+      label: {
+        en: 'Type',
+        de: 'Typ',
+      },
       options: [
-        {
-          label: 'None',
-          value: 'none',
-        },
-        {
-          label: 'High Impact',
-          value: 'highImpact',
-        },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
-        },
+        { label: { en: 'None', de: 'Keine' }, value: 'none' },
+        { label: { en: 'High Impact', de: 'Hohe Wirkung' }, value: 'highImpact' },
+        { label: { en: 'Medium Impact', de: 'Mittlere Wirkung' }, value: 'mediumImpact' },
+        { label: { en: 'Low Impact', de: 'Geringe Wirkung' }, value: 'lowImpact' },
       ],
-      required: false,
     },
     {
       name: 'richText',
       type: 'richText',
+      label: {
+        en: 'Additional Text',
+        de: 'Zusätzlicher Text',
+      },
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-            EXPERIMENTAL_TableFeature()
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
-        name: 'link',
-        type: 'group',
-        label: 'Link',
-        fields: [
-          {
-            name: 'label',
-            type: 'text',
-            label: 'Link Label',
-          },
-          {
-            name: 'url',
-            type: 'text',
-            label: 'URL',
-          },
-          {
-            name: 'target',
-            type: 'select',
-            label: 'Target',
-            options: [
-              {
-                label: 'Same Tab',
-                value: '_self',
-              },
-              {
-                label: 'New Tab',
-                value: '_blank',
-              },
-            ],
-            defaultValue: '_self',
-          },
-        ],
+      name: 'link',
+      type: 'group',
+      label: {
+        en: 'Link',
+        de: 'Link',
       },
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          label: {
+            en: 'Link Label',
+            de: 'Link-Beschriftung',
+          },
+        },
+        {
+          name: 'url',
+          type: 'text',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
+        },
+        {
+          name: 'target',
+          type: 'select',
+          label: {
+            en: 'Target',
+            de: 'Ziel',
+          },
+          options: [
+            { label: { en: 'Same Tab', de: 'Gleiches Tab' }, value: '_self' },
+            { label: { en: 'New Tab', de: 'Neues Tab' }, value: '_blank' },
+          ],
+          defaultValue: '_self',
+        },
+      ],
+    },
     {
       name: 'media',
       type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      label: {
+        en: 'Media',
+        de: 'Medien',
       },
       relationTo: 'media',
       required: false,
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      },
     },
   ],
-  label: false,
-}
+};

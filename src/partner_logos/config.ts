@@ -1,26 +1,35 @@
-import type { Field } from 'payload'
-
+import type { Field } from 'payload';
 import {
   EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+} from '@payloadcms/richtext-lexical';
 
 export const partnerlogo: Field = {
   name: 'partnerlogo',
   type: 'group',
+  label: {
+    en: 'Partner Logos',
+    de: 'Partner-Logos',
+  },
   fields: [
     {
       name: 'title',
       type: 'text',
-      required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'nestedSections',
       type: 'array',
-      label: 'Nested sections',
+      label: {
+        en: 'Nested Sections',
+        de: 'Verschachtelte Bereiche',
+      },
       fields: [
         {
           type: 'group',
@@ -28,43 +37,63 @@ export const partnerlogo: Field = {
             {
               name: 'partnerImage',
               type: 'upload',
-              label: 'Partner Image',
+              label: {
+                en: 'Partner Image',
+                de: 'Partnerbild',
+              },
               relationTo: 'media',
-              required: false,
             },
             {
-        name: 'link',
-        type: 'group',
-        label: 'Link',
-        fields: [
-          {
-            name: 'label',
-            type: 'text',
-            label: 'Link Label',
-          },
-          {
-            name: 'url',
-            type: 'text',
-            label: 'URL',
-          },
-          {
-            name: 'target',
-            type: 'select',
-            label: 'Target',
-            options: [
-              {
-                label: 'Same Tab',
-                value: '_self',
+              name: 'link',
+              type: 'group',
+              label: {
+                en: 'Link',
+                de: 'Link',
               },
-              {
-                label: 'New Tab',
-                value: '_blank',
-              },
-            ],
-            defaultValue: '_self',
-          },
-        ],
-      },
+              fields: [
+                {
+                  name: 'label',
+                  type: 'text',
+                  label: {
+                    en: 'Link Label',
+                    de: 'Link-Beschriftung',
+                  },
+                },
+                {
+                  name: 'url',
+                  type: 'text',
+                  label: {
+                    en: 'URL',
+                    de: 'URL',
+                  },
+                },
+                {
+                  name: 'target',
+                  type: 'select',
+                  label: {
+                    en: 'Target',
+                    de: 'Ziel',
+                  },
+                  options: [
+                    {
+                      label: {
+                        en: 'Same Tab',
+                        de: 'Gleiches Tab',
+                      },
+                      value: '_self',
+                    },
+                    {
+                      label: {
+                        en: 'New Tab',
+                        de: 'Neues Tab',
+                      },
+                      value: '_blank',
+                    },
+                  ],
+                  defaultValue: '_self',
+                },
+              ],
+            },
           ],
         },
       ],
@@ -72,53 +101,71 @@ export const partnerlogo: Field = {
     {
       name: 'type',
       type: 'select',
+      label: {
+        en: 'Type',
+        de: 'Typ',
+      },
       defaultValue: 'lowImpact',
-      label: 'Type',
       options: [
         {
-          label: 'None',
+          label: {
+            en: 'None',
+            de: 'Keiner',
+          },
           value: 'none',
         },
         {
-          label: 'High Impact',
+          label: {
+            en: 'High Impact',
+            de: 'Hohe Wirkung',
+          },
           value: 'highImpact',
         },
         {
-          label: 'Medium Impact',
+          label: {
+            en: 'Medium Impact',
+            de: 'Mittlere Wirkung',
+          },
           value: 'mediumImpact',
         },
         {
-          label: 'Low Impact',
+          label: {
+            en: 'Low Impact',
+            de: 'Geringe Wirkung',
+          },
           value: 'lowImpact',
         },
       ],
-      required: false,
     },
     {
       name: 'richText',
       type: 'richText',
+      label: {
+        en: 'Description',
+        de: 'Beschreibung',
+      },
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-            EXPERIMENTAL_TableFeature()
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
       name: 'media',
       type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      label: {
+        en: 'Media',
+        de: 'Medien',
       },
       relationTo: 'media',
-      required: false,
+      admin: {
+        condition: (_, { type } = {}) =>
+          ['highImpact', 'mediumImpact'].includes(type),
+      },
     },
   ],
-  label: false,
-}
+};

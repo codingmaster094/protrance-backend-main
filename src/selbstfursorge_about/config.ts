@@ -1,5 +1,4 @@
 import type { Field } from 'payload'
-
 import {
   EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
@@ -11,127 +10,158 @@ import {
 export const abouts: Field = {
   name: 'abouts',
   type: 'group',
+  label: {
+    en: 'About Section',
+    de: 'Über uns Bereich',
+  },
   fields: [
     {
-      name: 'headding',
+      name: 'heading',
       type: 'text',
-      required: false,
+      label: {
+        en: 'Heading',
+        de: 'Überschrift',
+      },
+      localized: true,
     },
     {
       name: 'description',
       type: 'richText',
+      label: {
+        en: 'Description',
+        de: 'Beschreibung',
+      },
+      localized: true,
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-             EXPERIMENTAL_TableFeature()
-            // UnorderedListFeature({ enabledUnorderList: ['ul'] }),
-            // OrderedListFeature({ enabledOrderList: ['ol'] }),
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
       name: 'aboutsImage',
       type: 'upload',
-      label: 'abouts Image',
       relationTo: 'media',
-      required: false,
+      label: {
+        en: 'About Image',
+        de: 'Über uns Bild',
+      },
     },
     {
       name: 'title',
       type: 'text',
-      required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
+      localized: true,
     },
     {
       name: 'main_description',
       type: 'richText',
+      label: {
+        en: 'Main Description',
+        de: 'Hauptbeschreibung',
+      },
+      localized: true,
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-             EXPERIMENTAL_TableFeature()
-            // UnorderedListFeature({ enabledUnorderList: ['ul'] }),
-            // OrderedListFeature({ enabledOrderList: ['ol'] }),
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
-      name: 'Sub_description',
+      name: 'sub_description',
       type: 'richText',
+      label: {
+        en: 'Sub Description',
+        de: 'Untere Beschreibung',
+      },
+      localized: true,
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-             EXPERIMENTAL_TableFeature()
-            // UnorderedListFeature({ enabledUnorderList: ['ul'] }),
-            // OrderedListFeature({ enabledOrderList: ['ol'] }),
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
       name: 'subtitle',
       type: 'text',
-      required: false,
+      label: {
+        en: 'Subtitle',
+        de: 'Untertitel',
+      },
+      localized: true,
     },
     {
-      name: 'Inner_description',
+      name: 'inner_description',
       type: 'richText',
+      label: {
+        en: 'Inner Description',
+        de: 'Innere Beschreibung',
+      },
+      localized: true,
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-             EXPERIMENTAL_TableFeature()
-            // UnorderedListFeature({ enabledUnorderList: ['ul'] }),
-            // OrderedListFeature({ enabledOrderList: ['ol'] }),
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
       name: 'link',
       type: 'group',
-      label: 'Link',
+      label: {
+        en: 'Link',
+        de: 'Verknüpfung',
+      },
       fields: [
         {
           name: 'label',
           type: 'text',
-          label: 'Link Label',
+          label: {
+            en: 'Link Label',
+            de: 'Linkbeschriftung',
+          },
+          localized: true,
         },
         {
           name: 'url',
           type: 'text',
-          label: 'URL',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
         },
         {
           name: 'target',
           type: 'select',
-          label: 'Target',
+          label: {
+            en: 'Target',
+            de: 'Ziel',
+          },
           options: [
             {
-              label: 'Same Tab',
+              label: { en: 'Same Tab', de: 'Gleiches Tab' },
               value: '_self',
             },
             {
-              label: 'New Tab',
+              label: { en: 'New Tab', de: 'Neues Tab' },
               value: '_blank',
             },
           ],
@@ -142,36 +172,30 @@ export const abouts: Field = {
     {
       name: 'type',
       type: 'select',
+      label: {
+        en: 'Type',
+        de: 'Typ',
+      },
       defaultValue: 'lowImpact',
-      label: 'Type',
       options: [
-        {
-          label: 'None',
-          value: 'none',
-        },
-        {
-          label: 'High Impact',
-          value: 'highImpact',
-        },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
-        },
+        { label: { en: 'None', de: 'Keine' }, value: 'none' },
+        { label: { en: 'High Impact', de: 'Hohe Wirkung' }, value: 'highImpact' },
+        { label: { en: 'Medium Impact', de: 'Mittlere Wirkung' }, value: 'mediumImpact' },
+        { label: { en: 'Low Impact', de: 'Geringe Wirkung' }, value: 'lowImpact' },
       ],
-      required: false,
     },
     {
       name: 'media',
       type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
-      },
       relationTo: 'media',
-      required: false,
+      label: {
+        en: 'Conditional Media',
+        de: 'Bedingtes Medium',
+      },
+      admin: {
+        condition: (_, { type } = {}) =>
+          ['highImpact', 'mediumImpact'].includes(type),
+      },
     },
   ],
   label: false,

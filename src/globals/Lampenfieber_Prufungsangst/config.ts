@@ -10,8 +10,13 @@ import { Reviews } from '@/enableReviews/config'
 import { faq } from '@/faq/config'
 import { SEO } from '@/SEO/config'
 import slugify from 'slugify'
+
 export const Lampenfieber_PrufungsangstPage: GlobalConfig = {
   slug: 'lampenfieber_Prufungsangst',
+  label: {
+    en: 'Stage Fright & Exam Anxiety',
+    de: 'Lampenfieber & Prüfungsangst',
+  },
   access: {
     read: () => true,
   },
@@ -20,6 +25,10 @@ export const Lampenfieber_PrufungsangstPage: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',
@@ -29,54 +38,84 @@ export const Lampenfieber_PrufungsangstPage: GlobalConfig = {
       admin: {
         readOnly: true,
       },
+      label: {
+        en: 'Slug',
+        de: 'Kurzlink',
+      },
       hooks: {
         beforeValidate: [
-  ({ siblingData, originalDoc }) => {
-    if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-      return slugify(siblingData.title, { lower: true });
-    }
-  },
-]
-,
+          ({ siblingData, originalDoc }) => {
+            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
+              return slugify(siblingData.title, { lower: true });
+            }
+          },
+        ],
       },
     },
     {
       type: 'tabs',
       tabs: [
         {
-          label: 'Hero',
+          label: {
+            en: 'Hero',
+            de: 'Held',
+          },
           fields: [Hero],
         },
         {
-          label: 'Partner Logo',
+          label: {
+            en: 'Partner Logo',
+            de: 'Partner Logo',
+          },
           fields: [partnerlogo],
         },
         {
-          label: 'Abouts',
+          label: {
+            en: 'About Section',
+            de: 'Über Abschnitt',
+          },
           fields: [abouts],
         },
         {
-          label: 'Meine Referenzen',
+          label: {
+            en: 'My References',
+            de: 'Meine Referenzen',
+          },
           fields: [Meine_Referenzen],
         },
         {
-          label: 'CTA',
+          label: {
+            en: 'Call to Action',
+            de: 'Call-to-Action',
+          },
           fields: [cta],
         },
         {
-          label: 'Service Section',
+          label: {
+            en: 'Service Section',
+            de: 'Dienstleistungsbereich',
+          },
           fields: [service],
         },
         {
-          label: 'Reviews',
+          label: {
+            en: 'Reviews',
+            de: 'Bewertungen',
+          },
           fields: [Reviews],
         },
         {
-          label: 'FAQ',
+          label: {
+            en: 'FAQ',
+            de: 'FAQ',
+          },
           fields: [faq],
         },
         {
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            de: 'SEO',
+          },
           fields: [SEO],
         },
       ],
@@ -84,6 +123,10 @@ export const Lampenfieber_PrufungsangstPage: GlobalConfig = {
     {
       name: 'publishedAt',
       type: 'date',
+      label: {
+        en: 'Published At',
+        de: 'Veröffentlicht am',
+      },
       admin: {
         position: 'sidebar',
       },

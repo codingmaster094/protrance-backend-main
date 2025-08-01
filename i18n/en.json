@@ -1,0 +1,9 @@
+{
+  "general": {
+    "welcome": "Welcome",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "title": "Dashboard"
+  }
+}

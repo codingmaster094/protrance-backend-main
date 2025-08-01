@@ -1,5 +1,4 @@
 import type { Field } from 'payload'
-
 import {
   EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
@@ -7,73 +6,72 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+
 export const KontaktMap: Field = {
   name: 'Kontaktmap',
   type: 'group',
+  label: { en: 'Contact Map', de: 'Kontaktkarte' },
   fields: [
     {
       name: 'headding',
       type: 'text',
       required: false,
+      label: { en: 'Heading', de: 'Überschrift' },
+      localized: true,
     },
     {
       name: 'description',
       type: 'richText',
+      label: { en: 'Description', de: 'Beschreibung' },
+      localized: true,
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-            EXPERIMENTAL_TableFeature()
-            // UnorderedListFeature({ enabledUnorderList: ['ul'] }),
-            // OrderedListFeature({ enabledOrderList: ['ol'] }),
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
       name: 'Form_title',
       type: 'text',
+      label: { en: 'Form Title', de: 'Formulartitel' },
+      localized: true,
       required: false,
     },
     {
       name: 'MapImage',
       type: 'upload',
-      label: 'Map Image',
+      label: { en: 'Map Image', de: 'Kartenbild' },
       relationTo: 'media',
       required: false,
     },
     {
       name: 'link',
       type: 'group',
-      label: 'Link',
+      label: { en: 'Link', de: 'Link' },
       fields: [
         {
           name: 'label',
           type: 'text',
-          label: 'Link Label',
+          label: { en: 'Link Label', de: 'Link Beschriftung' },
+          localized: true,
         },
         {
           name: 'url',
           type: 'text',
-          label: 'URL',
+          label: { en: 'URL', de: 'URL' },
+          localized: true,
         },
         {
           name: 'target',
           type: 'select',
-          label: 'Target',
+          label: { en: 'Target', de: 'Ziel' },
           options: [
-            {
-              label: 'Same Tab',
-              value: '_self',
-            },
-            {
-              label: 'New Tab',
-              value: '_blank',
-            },
+            { label: { en: 'Same Tab', de: 'Gleiches Tab' }, value: '_self' },
+            { label: { en: 'New Tab', de: 'Neues Tab' }, value: '_blank' },
           ],
           defaultValue: '_self',
         },
@@ -83,52 +81,38 @@ export const KontaktMap: Field = {
       name: 'type',
       type: 'select',
       defaultValue: 'lowImpact',
-      label: 'Type',
+      label: { en: 'Type', de: 'Typ' },
       options: [
-        {
-          label: 'None',
-          value: 'none',
-        },
-        {
-          label: 'High Impact',
-          value: 'highImpact',
-        },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
-        },
+        { label: { en: 'None', de: 'Keine' }, value: 'none' },
+        { label: { en: 'High Impact', de: 'Hohe Wirkung' }, value: 'highImpact' },
+        { label: { en: 'Medium Impact', de: 'Mittlere Wirkung' }, value: 'mediumImpact' },
+        { label: { en: 'Low Impact', de: 'Geringe Wirkung' }, value: 'lowImpact' },
       ],
       required: false,
     },
     {
       name: 'richText',
       type: 'richText',
+      label: { en: 'Rich Text', de: 'Rich Text' },
+      localized: true,
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-            EXPERIMENTAL_TableFeature()
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
       name: 'media',
       type: 'upload',
+      relationTo: 'media',
+      required: false,
       admin: {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
       },
-      relationTo: 'media',
-      required: false,
     },
   ],
-  label: false,
 }

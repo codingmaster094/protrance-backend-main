@@ -1,5 +1,4 @@
 import type { Field } from 'payload'
-
 import {
   EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
@@ -11,52 +10,78 @@ import {
 export const BlogAbout: Field = {
   name: 'Blog_About',
   type: 'group',
+  label: {
+    en: 'Blog About Section',
+    de: 'Blog Über Abschnitt',
+  },
   fields: [
     {
       name: 'headding',
       type: 'text',
       required: false,
+      localized: true,
+      label: {
+        en: 'Heading',
+        de: 'Überschrift',
+      },
     },
     {
       name: 'description',
       type: 'richText',
+      localized: true,
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
         ],
       }),
-      label: false,
+      label: {
+        en: 'Description',
+        de: 'Beschreibung',
+      },
     },
     {
       name: 'link',
       type: 'group',
-      label: 'Link',
+      label: {
+        en: 'Link',
+        de: 'Link',
+      },
       fields: [
         {
           name: 'label',
           type: 'text',
-          label: 'Link Label',
+          localized: true,
+          label: {
+            en: 'Link Label',
+            de: 'Link Beschriftung',
+          },
         },
         {
           name: 'url',
           type: 'text',
-          label: 'URL',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
         },
         {
           name: 'target',
           type: 'select',
-          label: 'Target',
+          label: {
+            en: 'Target',
+            de: 'Ziel',
+          },
           options: [
             {
-              label: 'Same Tab',
+              label: { en: 'Same Tab', de: 'Gleiches Tab' },
               value: '_self',
             },
             {
-              label: 'New Tab',
+              label: { en: 'New Tab', de: 'Neues Tab' },
               value: '_blank',
             },
           ],
@@ -68,22 +93,25 @@ export const BlogAbout: Field = {
       name: 'type',
       type: 'select',
       defaultValue: 'lowImpact',
-      label: 'Type',
+      label: {
+        en: 'Type',
+        de: 'Typ',
+      },
       options: [
         {
-          label: 'None',
+          label: { en: 'None', de: 'Keine' },
           value: 'none',
         },
         {
-          label: 'High Impact',
+          label: { en: 'High Impact', de: 'Starke Wirkung' },
           value: 'highImpact',
         },
         {
-          label: 'Medium Impact',
+          label: { en: 'Medium Impact', de: 'Mittlere Wirkung' },
           value: 'mediumImpact',
         },
         {
-          label: 'Low Impact',
+          label: { en: 'Low Impact', de: 'Geringe Wirkung' },
           value: 'lowImpact',
         },
       ],
@@ -92,12 +120,16 @@ export const BlogAbout: Field = {
     {
       name: 'media',
       type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      label: {
+        en: 'Media',
+        de: 'Medien',
       },
       relationTo: 'media',
       required: false,
+      admin: {
+        condition: (_, { type } = {}) =>
+          ['highImpact', 'mediumImpact'].includes(type),
+      },
     },
   ],
-  label: false,
 }

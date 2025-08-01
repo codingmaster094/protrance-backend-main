@@ -1,62 +1,89 @@
-import type { Field } from 'payload'
+import type { Field } from 'payload';
 import {
   EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+} from '@payloadcms/richtext-lexical';
+
 export const cta: Field = {
   name: 'cta',
   type: 'group',
+  label: {
+    en: 'Call To Action',
+    de: 'Handlungsaufforderung',
+  },
   fields: [
     {
       name: 'title',
       type: 'text',
-      required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'description',
       type: 'richText',
+      label: {
+        en: 'Description',
+        de: 'Beschreibung',
+      },
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-            EXPERIMENTAL_TableFeature()
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
       name: 'link',
       type: 'group',
-      label: 'Link',
+      label: {
+        en: 'Link',
+        de: 'Link',
+      },
       fields: [
         {
           name: 'label',
           type: 'text',
-          label: 'Link Label',
+          label: {
+            en: 'Link Label',
+            de: 'Link-Beschriftung',
+          },
         },
         {
           name: 'url',
           type: 'text',
-          label: 'URL',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
         },
         {
           name: 'target',
           type: 'select',
-          label: 'Target',
+          label: {
+            en: 'Target',
+            de: 'Ziel',
+          },
           options: [
             {
-              label: 'Same Tab',
+              label: {
+                en: 'Same Tab',
+                de: 'Gleiches Tab',
+              },
               value: '_self',
             },
             {
-              label: 'New Tab',
+              label: {
+                en: 'New Tab',
+                de: 'Neues Tab',
+              },
               value: '_blank',
             },
           ],
@@ -67,44 +94,63 @@ export const cta: Field = {
     {
       name: 'cta_image',
       type: 'upload',
-      label: 'CTA Image',
+      label: {
+        en: 'CTA Image',
+        de: 'CTA-Bild',
+      },
       relationTo: 'media',
-      required: false,
     },
     {
       name: 'type',
       type: 'select',
       defaultValue: 'lowImpact',
-      label: 'Type',
+      label: {
+        en: 'Type',
+        de: 'Typ',
+      },
       options: [
         {
-          label: 'None',
+          label: {
+            en: 'None',
+            de: 'Keine',
+          },
           value: 'none',
         },
         {
-          label: 'High Impact',
+          label: {
+            en: 'High Impact',
+            de: 'Starke Wirkung',
+          },
           value: 'highImpact',
         },
         {
-          label: 'Medium Impact',
+          label: {
+            en: 'Medium Impact',
+            de: 'Mittlere Wirkung',
+          },
           value: 'mediumImpact',
         },
         {
-          label: 'Low Impact',
+          label: {
+            en: 'Low Impact',
+            de: 'Geringe Wirkung',
+          },
           value: 'lowImpact',
         },
       ],
-      required: false,
     },
     {
       name: 'media',
       type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      label: {
+        en: 'Media',
+        de: 'Medien',
       },
       relationTo: 'media',
-      required: false,
+      admin: {
+        condition: (_, { type } = {}) =>
+          ['highImpact', 'mediumImpact'].includes(type),
+      },
     },
   ],
-  label: false,
-}
+};

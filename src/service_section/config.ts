@@ -1,42 +1,52 @@
-import type { Field } from 'payload'
-
+import type { Field } from 'payload';
 import {
   EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+} from '@payloadcms/richtext-lexical';
 
 export const service: Field = {
   name: 'service',
   type: 'group',
+  label: {
+    en: 'Service',
+    de: 'Dienstleistung',
+  },
   fields: [
     {
       name: 'title',
       type: 'text',
-      required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'description',
       type: 'richText',
+      label: {
+        en: 'Description',
+        de: 'Beschreibung',
+      },
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-             EXPERIMENTAL_TableFeature()
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
       name: 'nestedService',
       type: 'array',
-      label: 'Nested Service',
+      label: {
+        en: 'Nested Services',
+        de: 'Untergeordnete Dienstleistungen',
+      },
       fields: [
         {
           type: 'group',
@@ -44,103 +54,106 @@ export const service: Field = {
             {
               name: 'serviceImage',
               type: 'upload',
-              label: 'service Image',
+              label: {
+                en: 'Service Image',
+                de: 'Dienstleistungsbild',
+              },
               relationTo: 'media',
-              required: false,
             },
             {
               name: 'title',
               type: 'text',
-              required: false,
+              label: {
+                en: 'Title',
+                de: 'Titel',
+              },
             },
             {
-      name: 'description',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-             EXPERIMENTAL_TableFeature()
-          ]
-        },
-      }),
-      label: false,
-    },
+              name: 'description',
+              type: 'richText',
+              label: {
+                en: 'Description',
+                de: 'Beschreibung',
+              },
+              editor: lexicalEditor({
+                features: ({ rootFeatures }) => [
+                  ...rootFeatures,
+                  HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                  FixedToolbarFeature(),
+                  InlineToolbarFeature(),
+                  EXPERIMENTAL_TableFeature(),
+                ],
+              }),
+            },
           ],
         },
       ],
     },
-
     {
       name: 'type',
       type: 'select',
       defaultValue: 'lowImpact',
-      label: 'Type',
+      label: {
+        en: 'Type',
+        de: 'Typ',
+      },
       options: [
-        {
-          label: 'None',
-          value: 'none',
-        },
-        {
-          label: 'High Impact',
-          value: 'highImpact',
-        },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
-        },
+        { label: { en: 'None', de: 'Keine' }, value: 'none' },
+        { label: { en: 'High Impact', de: 'Hohe Wirkung' }, value: 'highImpact' },
+        { label: { en: 'Medium Impact', de: 'Mittlere Wirkung' }, value: 'mediumImpact' },
+        { label: { en: 'Low Impact', de: 'Geringe Wirkung' }, value: 'lowImpact' },
       ],
-      required: false,
     },
     {
-        name: 'link',
-        type: 'group',
-        label: 'Link',
-        fields: [
-          {
-            name: 'label',
-            type: 'text',
-            label: 'Link Label',
-          },
-          {
-            name: 'url',
-            type: 'text',
-            label: 'URL',
-          },
-          {
-            name: 'target',
-            type: 'select',
-            label: 'Target',
-            options: [
-              {
-                label: 'Same Tab',
-                value: '_self',
-              },
-              {
-                label: 'New Tab',
-                value: '_blank',
-              },
-            ],
-            defaultValue: '_self',
-          },
-        ],
+      name: 'link',
+      type: 'group',
+      label: {
+        en: 'Link',
+        de: 'Link',
       },
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          label: {
+            en: 'Link Label',
+            de: 'Link-Beschriftung',
+          },
+        },
+        {
+          name: 'url',
+          type: 'text',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
+        },
+        {
+          name: 'target',
+          type: 'select',
+          label: {
+            en: 'Target',
+            de: 'Ziel',
+          },
+          options: [
+            { label: { en: 'Same Tab', de: 'Gleiches Tab' }, value: '_self' },
+            { label: { en: 'New Tab', de: 'Neues Tab' }, value: '_blank' },
+          ],
+          defaultValue: '_self',
+        },
+      ],
+    },
     {
       name: 'media',
       type: 'upload',
+      label: {
+        en: 'Media',
+        de: 'Medien',
+      },
+      relationTo: 'media',
       admin: {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
       },
-      relationTo: 'media',
-      required: false,
     },
   ],
-  label: false,
-}
+};

@@ -26,10 +26,16 @@ import { Posts } from './collections/posts'
 import { Pages } from './collections/Pages'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import { Robots } from './globals/robots/config'
+import { en } from '@payloadcms/translations/languages/en'
+import { de } from '@payloadcms/translations/languages/de'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 export default buildConfig({
   serverURL: 'https://protrance-backend-main.vercel.app',
+  i18n: {
+    supportedLanguages: { en, de },
+  },
   admin: {
     user: Users.slug,
     meta: {

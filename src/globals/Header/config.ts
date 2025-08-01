@@ -1,8 +1,13 @@
 import type { GlobalConfig } from 'payload'
 import { revalidateHeader } from './hooks/revalidateHeader'
 import slugify from 'slugify'
+
 export const Header: GlobalConfig = {
   slug: 'header',
+  label: {
+    en: 'Header',
+    de: 'Kopfzeile',
+  },
   access: {
     read: () => true,
   },
@@ -11,6 +16,10 @@ export const Header: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',
@@ -20,50 +29,74 @@ export const Header: GlobalConfig = {
       admin: {
         readOnly: true,
       },
+      label: {
+        en: 'Slug',
+        de: 'Kurzlink',
+      },
       hooks: {
         beforeValidate: [
-  ({ siblingData, originalDoc }) => {
-    if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-      return slugify(siblingData.title, { lower: true });
-    }
-  },
-]
-,
+          ({ siblingData, originalDoc }) => {
+            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
+              return slugify(siblingData.title, { lower: true });
+            }
+          },
+        ],
       },
     },
     {
       name: 'Header_Logo',
       type: 'upload',
-      label: 'Logo',
+      label: {
+        en: 'Logo',
+        de: 'Logo',
+      },
       relationTo: 'media',
       required: false,
     },
     {
       name: 'link',
       type: 'group',
-      label: 'Link',
+      label: {
+        en: 'Link',
+        de: 'Link',
+      },
       fields: [
         {
           name: 'Kontakt_label',
           type: 'text',
-          label: 'Link Label',
+          label: {
+            en: 'Link Label',
+            de: 'Link-Beschriftung',
+          },
         },
         {
           name: 'url',
           type: 'text',
-          label: 'URL',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
         },
         {
           name: 'target',
           type: 'select',
-          label: 'Target',
+          label: {
+            en: 'Target',
+            de: 'Ziel',
+          },
           options: [
             {
-              label: 'Same Tab',
+              label: {
+                en: 'Same Tab',
+                de: 'Gleiches Fenster',
+              },
               value: '_self',
             },
             {
-              label: 'New Tab',
+              label: {
+                en: 'New Tab',
+                de: 'Neues Fenster',
+              },
               value: '_blank',
             },
           ],
@@ -75,22 +108,37 @@ export const Header: GlobalConfig = {
       name: 'type',
       type: 'select',
       defaultValue: 'lowImpact',
-      label: 'Type',
+      label: {
+        en: 'Type',
+        de: 'Typ',
+      },
       options: [
         {
-          label: 'None',
+          label: {
+            en: 'None',
+            de: 'Keine',
+          },
           value: 'none',
         },
         {
-          label: 'High Impact',
+          label: {
+            en: 'High Impact',
+            de: 'Hoher Einfluss',
+          },
           value: 'highImpact',
         },
         {
-          label: 'Medium Impact',
+          label: {
+            en: 'Medium Impact',
+            de: 'Mittlerer Einfluss',
+          },
           value: 'mediumImpact',
         },
         {
-          label: 'Low Impact',
+          label: {
+            en: 'Low Impact',
+            de: 'Geringer Einfluss',
+          },
           value: 'lowImpact',
         },
       ],
@@ -99,6 +147,10 @@ export const Header: GlobalConfig = {
     {
       name: 'media',
       type: 'upload',
+      label: {
+        en: 'Media',
+        de: 'Medien',
+      },
       admin: {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
       },

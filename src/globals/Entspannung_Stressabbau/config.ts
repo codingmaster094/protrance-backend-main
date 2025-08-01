@@ -10,8 +10,13 @@ import { Reviews } from '@/enableReviews/config'
 import { faq } from '@/faq/config'
 import { SEO } from '@/SEO/config'
 import slugify from 'slugify'
+
 export const Entspannung_StressabbauPage: GlobalConfig = {
   slug: 'entspannung_StressabbauPage',
+  label: {
+    en: 'Relaxation & Stress Relief Page',
+    de: 'Entspannungs- & Stressabbau-Seite',
+  },
   access: {
     read: () => true,
   },
@@ -20,6 +25,10 @@ export const Entspannung_StressabbauPage: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',
@@ -29,54 +38,84 @@ export const Entspannung_StressabbauPage: GlobalConfig = {
       admin: {
         readOnly: true,
       },
+      label: {
+        en: 'Slug',
+        de: 'Kurzlink',
+      },
       hooks: {
         beforeValidate: [
-  ({ siblingData, originalDoc }) => {
-    if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-      return slugify(siblingData.title, { lower: true });
-    }
-  },
-]
-,
+          ({ siblingData, originalDoc }) => {
+            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
+              return slugify(siblingData.title, { lower: true });
+            }
+          },
+        ],
       },
     },
     {
       type: 'tabs',
       tabs: [
         {
-          label: 'Hero',
+          label: {
+            en: 'Hero',
+            de: 'Held',
+          },
           fields: [Hero],
         },
         {
-          label: 'Partner Logo',
+          label: {
+            en: 'Partner Logo',
+            de: 'Partnerlogo',
+          },
           fields: [partnerlogo],
         },
         {
-          label: 'Abouts',
+          label: {
+            en: 'About Section',
+            de: 'Über Abschnitt',
+          },
           fields: [abouts],
         },
         {
-          label: 'Meine Referenzen',
+          label: {
+            en: 'My References',
+            de: 'Meine Referenzen',
+          },
           fields: [Meine_Referenzen],
         },
         {
-          label: 'CTA',
+          label: {
+            en: 'CTA',
+            de: 'Call to Action',
+          },
           fields: [cta],
         },
         {
-          label: 'Service Section',
+          label: {
+            en: 'Service Section',
+            de: 'Dienstleistungsbereich',
+          },
           fields: [service],
         },
         {
-          label: 'Reviews',
+          label: {
+            en: 'Reviews',
+            de: 'Bewertungen',
+          },
           fields: [Reviews],
         },
         {
-          label: 'FAQ',
+          label: {
+            en: 'FAQ',
+            de: 'FAQ',
+          },
           fields: [faq],
         },
         {
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            de: 'SEO',
+          },
           fields: [SEO],
         },
       ],
@@ -86,6 +125,10 @@ export const Entspannung_StressabbauPage: GlobalConfig = {
       type: 'date',
       admin: {
         position: 'sidebar',
+      },
+      label: {
+        en: 'Published At',
+        de: 'Veröffentlicht am',
       },
     },
   ],

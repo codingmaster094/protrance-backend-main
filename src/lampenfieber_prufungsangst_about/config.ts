@@ -1,33 +1,43 @@
-import { EXPERIMENTAL_TableFeature, FixedToolbarFeature, HeadingFeature, InlineToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import type { Field } from 'payload'
+import {
+  EXPERIMENTAL_TableFeature,
+  FixedToolbarFeature,
+  HeadingFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
 
 export const abouts: Field = {
   name: 'abouts',
   type: 'group',
+  label: { en: 'About Section', de: 'Über Abschnitt' },
   fields: [
     {
       name: 'headding',
       type: 'text',
       required: false,
+      label: { en: 'Heading', de: 'Überschrift' },
+      localized: true,
     },
     {
       name: 'main_description',
       type: 'richText',
+      label: { en: 'Main Description', de: 'Hauptbeschreibung' },
+      localized: true,
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
         ],
       }),
-      label: false,
     },
     {
       name: 'aboutsImage',
       type: 'upload',
-      label: 'abouts Image',
+      label: { en: 'About Image', de: 'Über Bild' },
       relationTo: 'media',
       required: false,
     },
@@ -35,116 +45,104 @@ export const abouts: Field = {
       name: 'title',
       type: 'text',
       required: false,
+      label: { en: 'Title', de: 'Titel' },
+      localized: true,
     },
     {
       name: 'description1',
       type: 'richText',
+      label: { en: 'Description 1', de: 'Beschreibung 1' },
+      localized: true,
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
         ],
       }),
-      label: false,
     },
     {
       name: 'subdescription',
       type: 'richText',
+      label: { en: 'Sub Description', de: 'Untere Beschreibung' },
+      localized: true,
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
         ],
       }),
-      label: false,
     },
     {
       name: 'description2',
       type: 'richText',
+      label: { en: 'Description 2', de: 'Beschreibung 2' },
+      localized: true,
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
         ],
       }),
-      label: false,
     },
     {
       name: 'type',
       type: 'select',
       defaultValue: 'lowImpact',
-      label: 'Type',
+      label: { en: 'Type', de: 'Typ' },
       options: [
-        {
-          label: 'None',
-          value: 'none',
-        },
-        {
-          label: 'High Impact',
-          value: 'highImpact',
-        },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
-        },
+        { label: { en: 'None', de: 'Keine' }, value: 'none' },
+        { label: { en: 'High Impact', de: 'Hohe Wirkung' }, value: 'highImpact' },
+        { label: { en: 'Medium Impact', de: 'Mittlere Wirkung' }, value: 'mediumImpact' },
+        { label: { en: 'Low Impact', de: 'Geringe Wirkung' }, value: 'lowImpact' },
       ],
       required: false,
     },
     {
-        name: 'link',
-        type: 'group',
-        label: 'Link',
-        fields: [
-          {
-            name: 'label',
-            type: 'text',
-            label: 'Link Label',
-          },
-          {
-            name: 'url',
-            type: 'text',
-            label: 'URL',
-          },
-          {
-            name: 'target',
-            type: 'select',
-            label: 'Target',
-            options: [
-              {
-                label: 'Same Tab',
-                value: '_self',
-              },
-              {
-                label: 'New Tab',
-                value: '_blank',
-              },
-            ],
-            defaultValue: '_self',
-          },
-        ],
-      },
+      name: 'link',
+      type: 'group',
+      label: { en: 'Link', de: 'Link' },
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          label: { en: 'Link Label', de: 'Link Beschriftung' },
+          localized: true,
+        },
+        {
+          name: 'url',
+          type: 'text',
+          label: { en: 'URL', de: 'URL' },
+          localized: true,
+        },
+        {
+          name: 'target',
+          type: 'select',
+          label: { en: 'Target', de: 'Ziel' },
+          options: [
+            { label: { en: 'Same Tab', de: 'Gleiches Tab' }, value: '_self' },
+            { label: { en: 'New Tab', de: 'Neues Tab' }, value: '_blank' },
+          ],
+          defaultValue: '_self',
+        },
+      ],
+    },
     {
       name: 'media',
       type: 'upload',
+      relationTo: 'media',
+      required: false,
       admin: {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
       },
-      relationTo: 'media',
-      required: false,
     },
   ],
-  label: false,
 }

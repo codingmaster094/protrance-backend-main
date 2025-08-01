@@ -5,6 +5,10 @@ import slugify from 'slugify'
 
 export const Impressum: GlobalConfig = {
   slug: 'impressum',
+  label: {
+    en: 'Legal Notice',
+    de: 'Impressum',
+  },
   access: {
     read: () => true,
   },
@@ -13,6 +17,10 @@ export const Impressum: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: true,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',
@@ -22,26 +30,35 @@ export const Impressum: GlobalConfig = {
       admin: {
         readOnly: true,
       },
+      label: {
+        en: 'Slug',
+        de: 'Kurzlink',
+      },
       hooks: {
         beforeValidate: [
-  ({ siblingData, originalDoc }) => {
-    if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-      return slugify(siblingData.title, { lower: true });
-    }
-  },
-]
-,
+          ({ siblingData, originalDoc }) => {
+            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
+              return slugify(siblingData.title, { lower: true });
+            }
+          },
+        ],
       },
     },
     {
       type: 'tabs',
       tabs: [
         {
-          label: 'Content',
+          label: {
+            en: 'Content',
+            de: 'Inhalt',
+          },
           fields: [Contents],
         },
         {
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            de: 'SEO',
+          },
           fields: [SEO],
         },
       ],
@@ -49,6 +66,10 @@ export const Impressum: GlobalConfig = {
     {
       name: 'publishedDate',
       type: 'date',
+      label: {
+        en: 'Published Date',
+        de: 'Veröffentlichungsdatum',
+      },
     },
   ],
 }

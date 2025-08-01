@@ -1,12 +1,13 @@
-import type { GlobalConfig } from 'payload'
-import { revalidateReviews } from './hooks/revalidateReviews'
+import type { GlobalConfig } from 'payload';
+import { revalidateReviews } from './hooks/revalidateReviews';
 import {
   EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+} from '@payloadcms/richtext-lexical';
+
 export const Reviews: GlobalConfig = {
   slug: 'reviews',
   access: {
@@ -16,28 +17,35 @@ export const Reviews: GlobalConfig = {
     {
       name: 'title',
       type: 'text',
-      required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'description',
       type: 'richText',
+      label: {
+        en: 'Description',
+        de: 'Beschreibung',
+      },
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-             EXPERIMENTAL_TableFeature()
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
+        ],
       }),
-      label: false,
     },
     {
       name: 'nestedlogos',
       type: 'array',
-      label: 'Nested logos',
+      label: {
+        en: 'Nested Logos',
+        de: 'Verschachtelte Logos',
+      },
       fields: [
         {
           type: 'group',
@@ -45,38 +53,46 @@ export const Reviews: GlobalConfig = {
             {
               name: 'logosImage',
               type: 'upload',
-              label: 'logos Image',
+              label: {
+                en: 'Logo Image',
+                de: 'Logo-Bild',
+              },
               relationTo: 'media',
-              required: false,
             },
             {
               name: 'link',
               type: 'group',
-              label: 'Link',
+              label: {
+                en: 'Link',
+                de: 'Link',
+              },
               fields: [
                 {
                   name: 'label',
                   type: 'text',
-                  label: 'Link Label',
+                  label: {
+                    en: 'Link Label',
+                    de: 'Link-Beschriftung',
+                  },
                 },
                 {
                   name: 'url',
                   type: 'text',
-                  label: 'URL',
+                  label: {
+                    en: 'URL',
+                    de: 'URL',
+                  },
                 },
                 {
                   name: 'target',
                   type: 'select',
-                  label: 'Target',
+                  label: {
+                    en: 'Target',
+                    de: 'Ziel',
+                  },
                   options: [
-                    {
-                      label: 'Same Tab',
-                      value: '_self',
-                    },
-                    {
-                      label: 'New Tab',
-                      value: '_blank',
-                    },
+                    { label: { en: 'Same Tab', de: 'Gleiches Tab' }, value: '_self' },
+                    { label: { en: 'New Tab', de: 'Neues Tab' }, value: '_blank' },
                   ],
                   defaultValue: '_self',
                 },
@@ -89,7 +105,10 @@ export const Reviews: GlobalConfig = {
     {
       name: 'nestedReviews',
       type: 'array',
-      label: 'Nested Reviews',
+      label: {
+        en: 'Nested Reviews',
+        de: 'Verschachtelte Rezensionen',
+      },
       fields: [
         {
           type: 'group',
@@ -97,33 +116,44 @@ export const Reviews: GlobalConfig = {
             {
               name: 'title',
               type: 'text',
-              required: false,
+              label: {
+                en: 'Title',
+                de: 'Titel',
+              },
             },
             {
-      name: 'description',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [
-          ...defaultFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
-        ],
-      }),
-      label: false,
-    },
+              name: 'description',
+              type: 'richText',
+              label: {
+                en: 'Description',
+                de: 'Beschreibung',
+              },
+              editor: lexicalEditor({
+                features: ({ defaultFeatures }) => [
+                  ...defaultFeatures,
+                  HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                  FixedToolbarFeature(),
+                  InlineToolbarFeature(),
+                  EXPERIMENTAL_TableFeature(),
+                ],
+              }),
+            },
             {
               name: 'reviewImage',
               type: 'upload',
-              label: 'profile Image',
+              label: {
+                en: 'Profile Image',
+                de: 'Profilbild',
+              },
               relationTo: 'media',
-              required: false,
             },
             {
               name: 'profile_name',
               type: 'text',
-              required: false,
+              label: {
+                en: 'Profile Name',
+                de: 'Profilname',
+              },
             },
           ],
         },
@@ -133,4 +163,4 @@ export const Reviews: GlobalConfig = {
   hooks: {
     afterChange: [revalidateReviews],
   },
-}
+};

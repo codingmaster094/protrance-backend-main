@@ -11,8 +11,13 @@ import { Reviews } from '@/enableReviews/config'
 import { protance_zahlen } from '@/Protance_Zahlen/config'
 import { SEO } from '@/SEO/config'
 import slugify from 'slugify'
+
 export const Uber_michPage: GlobalConfig = {
   slug: 'uber-mich',
+  label: {
+    en: 'About Me',
+    de: 'Über mich',
+  },
   access: {
     read: () => true,
   },
@@ -21,67 +26,104 @@ export const Uber_michPage: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',
       type: 'text',
       required: true,
       unique: true,
+      label: {
+        en: 'Slug',
+        de: 'Kurzlink',
+      },
       admin: {
         readOnly: true,
       },
       hooks: {
         beforeValidate: [
-  ({ siblingData, originalDoc }) => {
-    if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-      return slugify(siblingData.title, { lower: true });
-    }
-  },
-]
-,
+          ({ siblingData, originalDoc }) => {
+            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
+              return slugify(siblingData.title, { lower: true })
+            }
+          },
+        ],
       },
     },
     {
       type: 'tabs',
       tabs: [
         {
-          label: 'Hero',
+          label: {
+            en: 'Hero',
+            de: 'Held',
+          },
           fields: [Hero],
         },
         {
-          label: 'Partner Logo',
+          label: {
+            en: 'Partner Logo',
+            de: 'Partnerlogo',
+          },
           fields: [partnerlogo],
         },
         {
-          label: 'Abouts',
+          label: {
+            en: 'About Section',
+            de: 'Über Abschnitt',
+          },
           fields: [abouts],
         },
         {
-          label: 'Service Section',
+          label: {
+            en: 'Service Section',
+            de: 'Dienstleistungsbereich',
+          },
           fields: [service],
         },
         {
-          label: 'wichtige meilensteine Section',
+          label: {
+            en: 'Milestones Section',
+            de: 'Wichtige Meilensteine',
+          },
           fields: [Wichtige_Meilensteine],
         },
         {
-          label: 'Abouts-2',
+          label: {
+            en: 'About Section 2',
+            de: 'Über Abschnitt 2',
+          },
           fields: [abouts2],
         },
         {
-          label: 'Map',
+          label: {
+            en: 'Map',
+            de: 'Karte',
+          },
           fields: [uberMap],
         },
         {
-          label: 'Protance Zahlen',
+          label: {
+            en: 'Protrance Numbers',
+            de: 'Protrance Zahlen',
+          },
           fields: [protance_zahlen],
         },
         {
-          label: 'Reviews',
+          label: {
+            en: 'Reviews',
+            de: 'Bewertungen',
+          },
           fields: [Reviews],
         },
         {
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            de: 'SEO',
+          },
           fields: [SEO],
         },
       ],
@@ -89,6 +131,10 @@ export const Uber_michPage: GlobalConfig = {
     {
       name: 'publishedAt',
       type: 'date',
+      label: {
+        en: 'Published At',
+        de: 'Veröffentlicht am',
+      },
       admin: {
         position: 'sidebar',
       },

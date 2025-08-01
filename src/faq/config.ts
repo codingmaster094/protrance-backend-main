@@ -1,24 +1,45 @@
-import { EXPERIMENTAL_TableFeature, FixedToolbarFeature, HeadingFeature, InlineToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
-import type { Field } from 'payload'
+import {
+  EXPERIMENTAL_TableFeature,
+  FixedToolbarFeature,
+  HeadingFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical';
+import type { Field } from 'payload';
+
 export const faq: Field = {
   name: 'faq',
   type: 'group',
-  fields: [
-     {
-    name: 'enableFAQ',
-    type: 'checkbox',
-    label: 'Enable FAQ Section',
-    defaultValue: true, // optional
+  label: {
+    en: 'FAQ Section',
+    de: 'FAQ Abschnitt',
   },
+  fields: [
+    {
+      name: 'enableFAQ',
+      type: 'checkbox',
+      label: {
+        en: 'Enable FAQ Section',
+        de: 'FAQ-Bereich aktivieren',
+      },
+      defaultValue: true,
+    },
     {
       name: 'title',
       type: 'text',
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
       required: false,
     },
     {
       name: 'nestedfaq',
       type: 'array',
-      label: 'Nested faq',
+      label: {
+        en: 'Nested FAQs',
+        de: 'Verschachtelte FAQs',
+      },
       fields: [
         {
           type: 'group',
@@ -26,27 +47,32 @@ export const faq: Field = {
             {
               name: 'title',
               type: 'text',
+              label: {
+                en: 'Question',
+                de: 'Frage',
+              },
               required: false,
             },
             {
-      name: 'description',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [
-          ...defaultFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
-        ],
-      }),
-      label: false,
-    }
-            // Add more fields here as needed
+              name: 'description',
+              type: 'richText',
+              label: {
+                en: 'Answer',
+                de: 'Antwort',
+              },
+              editor: lexicalEditor({
+                features: ({ defaultFeatures }) => [
+                  ...defaultFeatures,
+                  HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                  FixedToolbarFeature(),
+                  InlineToolbarFeature(),
+                  EXPERIMENTAL_TableFeature(),
+                ],
+              }),
+            },
           ],
         },
       ],
     },
   ],
-  label: false,
-}
+};

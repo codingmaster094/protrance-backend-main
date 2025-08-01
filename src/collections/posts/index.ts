@@ -10,6 +10,16 @@ import { SEO } from '@/SEO/config'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
+  labels: {
+    singular: {
+      en: 'Post',
+      de: 'Beitrag',
+    },
+    plural: {
+      en: 'Posts',
+      de: 'Beiträge',
+    },
+  },
   admin: {
     useAsTitle: 'title',
     preview: (doc) => {
@@ -22,26 +32,42 @@ export const Posts: CollectionConfig = {
   },
   fields: [
     {
-        name: 'authors',
-        type: 'relationship',
-        relationTo: 'users',
-        hasMany: true,
-        admin: {
-            position: 'sidebar'
-        }
+      name: 'authors',
+      type: 'relationship',
+      relationTo: 'users',
+      hasMany: true,
+      label: {
+        en: 'Authors',
+        de: 'Autoren',
+      },
+      admin: {
+        position: 'sidebar',
+      },
     },
     {
       name: 'title',
       type: 'text',
       required: true,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',
       type: 'text',
       required: true,
       unique: true,
+      label: {
+        en: 'Slug',
+        de: 'Kurzlink',
+      },
       admin: {
         readOnly: true,
+        description: {
+          en: 'Auto-generated from title if left blank',
+          de: 'Wird automatisch aus dem Titel generiert, wenn leer',
+        },
       },
       hooks: {
         beforeValidate: [
@@ -53,31 +79,52 @@ export const Posts: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Hero',
+          label: {
+            en: 'Hero',
+            de: 'Held',
+          },
           fields: [Hero],
         },
         {
-          label: 'Partner Logo',
+          label: {
+            en: 'Partner Logo',
+            de: 'Partnerlogo',
+          },
           fields: [partnerlogo],
         },
         {
-          label: 'BlogAbout',
+          label: {
+            en: 'Blog About',
+            de: 'Über den Blog',
+          },
           fields: [BlogAbout],
         },
         {
-          label: 'CTA',
+          label: {
+            en: 'CTA',
+            de: 'Handlungsaufforderung',
+          },
           fields: [cta],
         },
         {
-          label: 'FAQ',
+          label: {
+            en: 'FAQ',
+            de: 'Häufige Fragen',
+          },
           fields: [faq],
         },
         {
-          label: 'Content',
+          label: {
+            en: 'Content',
+            de: 'Inhalt',
+          },
           fields: [Contents],
         },
         {
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            de: 'SEO',
+          },
           fields: [SEO],
         },
       ],
@@ -85,6 +132,10 @@ export const Posts: CollectionConfig = {
     {
       name: 'publishedDate',
       type: 'date',
+      label: {
+        en: 'Published Date',
+        de: 'Veröffentlichungsdatum',
+      },
     },
   ],
 }

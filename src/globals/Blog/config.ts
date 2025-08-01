@@ -2,13 +2,17 @@ import type { GlobalConfig } from 'payload'
 import { revalidateBlog } from './hooks/revalidateBlog'
 import { Hero } from '@/Hero/config'
 import { partnerlogo } from '@/partner_logos/config'
-
 import { cta } from '@/CTA/config'
 import { SEO } from '@/SEO/config'
 import { Blog_List_Title } from '@/text_field/config'
 import slugify from 'slugify'
+
 export const BlogPage: GlobalConfig = {
   slug: 'blog',
+  label: {
+    en: 'Blog',
+    de: 'Blog',
+  },
   access: {
     read: () => true,
   },
@@ -17,6 +21,10 @@ export const BlogPage: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',
@@ -26,38 +34,56 @@ export const BlogPage: GlobalConfig = {
       admin: {
         readOnly: true,
       },
+      label: {
+        en: 'Slug',
+        de: 'Kurzlink',
+      },
       hooks: {
         beforeValidate: [
-  ({ siblingData, originalDoc }) => {
-    if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-      return slugify(siblingData.title, { lower: true });
-    }
-  },
-]
-,
+          ({ siblingData, originalDoc }) => {
+            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
+              return slugify(siblingData.title, { lower: true });
+            }
+          },
+        ],
       },
     },
     {
       type: 'tabs',
       tabs: [
         {
-          label: 'Hero',
+          label: {
+            en: 'Hero',
+            de: 'Held',
+          },
           fields: [Hero],
         },
         {
-          label: 'Partner Logo',
+          label: {
+            en: 'Partner Logo',
+            de: 'Partner-Logo',
+          },
           fields: [partnerlogo],
         },
         {
-          label: 'CTA',
+          label: {
+            en: 'CTA',
+            de: 'Handlungsaufforderung',
+          },
           fields: [cta],
         },
         {
-          label: 'Blog Title',
+          label: {
+            en: 'Blog Title',
+            de: 'Blog-Titel',
+          },
           fields: [Blog_List_Title],
         },
         {
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            de: 'SEO',
+          },
           fields: [SEO],
         },
       ],
@@ -67,6 +93,10 @@ export const BlogPage: GlobalConfig = {
       type: 'date',
       admin: {
         position: 'sidebar',
+      },
+      label: {
+        en: 'Published At',
+        de: 'Veröffentlicht am',
       },
     },
   ],

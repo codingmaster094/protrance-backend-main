@@ -6,8 +6,13 @@ import { KontaktMap } from '@/KontaktMap/config'
 import { Reviews } from '@/enableReviews/config'
 import { SEO } from '@/SEO/config'
 import slugify from 'slugify'
+
 export const KontaktPage: GlobalConfig = {
   slug: 'kontakt',
+  label: {
+    en: 'Contact Page',
+    de: 'Kontaktseite',
+  },
   access: {
     read: () => true,
   },
@@ -16,6 +21,10 @@ export const KontaktPage: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',
@@ -25,38 +34,56 @@ export const KontaktPage: GlobalConfig = {
       admin: {
         readOnly: true,
       },
+      label: {
+        en: 'Slug',
+        de: 'Kurzlink',
+      },
       hooks: {
         beforeValidate: [
-  ({ siblingData, originalDoc }) => {
-    if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-      return slugify(siblingData.title, { lower: true });
-    }
-  },
-]
-,
+          ({ siblingData, originalDoc }) => {
+            if (siblingData?.title && siblingData.title !== originalDoc?.title) {
+              return slugify(siblingData.title, { lower: true });
+            }
+          },
+        ],
       },
     },
     {
       type: 'tabs',
       tabs: [
         {
-          label: 'Hero',
+          label: {
+            en: 'Hero',
+            de: 'Held',
+          },
           fields: [Hero],
         },
         {
-          label: 'Kontaktmoglichkeiten',
+          label: {
+            en: 'Contact Options',
+            de: 'Kontaktmöglichkeiten',
+          },
           fields: [Kontaktmoglichkeiten],
         },
         {
-          label: 'KontaktMap',
+          label: {
+            en: 'Contact Map',
+            de: 'Kontaktkarte',
+          },
           fields: [KontaktMap],
         },
         {
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            de: 'SEO',
+          },
           fields: [SEO],
         },
         {
-          label: 'Reviews',
+          label: {
+            en: 'Reviews',
+            de: 'Bewertungen',
+          },
           fields: [Reviews],
         },
       ],
@@ -64,6 +91,10 @@ export const KontaktPage: GlobalConfig = {
     {
       name: 'publishedAt',
       type: 'date',
+      label: {
+        en: 'Published At',
+        de: 'Veröffentlicht am',
+      },
       admin: {
         position: 'sidebar',
       },

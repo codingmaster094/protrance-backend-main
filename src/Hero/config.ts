@@ -1,4 +1,4 @@
-import type { Field } from 'payload'
+import type { Field } from 'payload';
 
 import {
   FixedToolbarFeature,
@@ -6,102 +6,154 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
   EXPERIMENTAL_TableFeature,
-  //   UnorderedListFeature, // This enables <ul>
-  //   OrderedListFeature, // This enables <ol>
-} from '@payloadcms/richtext-lexical'
-
+} from '@payloadcms/richtext-lexical';
 
 export const Hero: Field = {
   name: 'hero',
   type: 'group',
+  label: {
+    en: 'Hero Section',
+    de: 'Hero Bereich',
+  },
   fields: [
-   {
-  name: 'container_Hight',
-  type: 'select',
-  options: [
     {
-      label: 'Full',
-      value: 'full',
+      name: 'container_Hight',
+      type: 'select',
+      label: {
+        en: 'Container Height',
+        de: 'Containerhöhe',
+      },
+      options: [
+        {
+          label: {
+            en: 'Full',
+            de: 'Voll',
+          },
+          value: 'full',
+        },
+        {
+          label: {
+            en: 'Normal',
+            de: 'Normal',
+          },
+          value: 'normal',
+        },
+      ],
+      required: true,
+      defaultValue: 'normal',
     },
     {
-      label: 'Normal',
-      value: 'normal',
+      name: 'Image_Position',
+      type: 'select',
+      label: {
+        en: 'Image Position',
+        de: 'Bildposition',
+      },
+      options: [
+        {
+          label: {
+            en: 'Top',
+            de: 'Oben',
+          },
+          value: 'top',
+        },
+        {
+          label: {
+            en: 'Middle',
+            de: 'Mitte',
+          },
+          value: 'middle',
+        },
+        {
+          label: {
+            en: 'Bottom',
+            de: 'Unten',
+          },
+          value: 'bottam',
+        },
+      ],
+      required: true,
+      defaultValue: 'middle',
     },
-  ],
-  required: true, 
-  defaultValue: 'normal', 
-},
-   {
-  name: 'Image_Position',
-  type: 'select',
-  options: [
-    {
-      label: 'Top',
-      value: 'top',
-    },
-    {
-      label: 'Middle',
-      value: 'middle',
-    },
-    {
-      label: 'Bottam',
-      value: 'bottam',
-    },
-  ],
-  required: true, // optional: set to true if you want this field to be mandatory
-  defaultValue: 'middle', // optional: set default
-},
     {
       name: 'heroImage',
       type: 'upload',
-      label: 'Hero Image',
+      label: {
+        en: 'Hero Image',
+        de: 'Hero Bild',
+      },
       relationTo: 'media',
       required: false,
     },
     {
       name: 'text',
       type: 'text',
+      label: {
+        en: 'Text',
+        de: 'Text',
+      },
     },
     {
       name: 'richText',
       type: 'richText',
+      label: {
+        en: 'Rich Text',
+        de: 'Rich Text',
+      },
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(), // This enables the table functionality in the editor
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+          EXPERIMENTAL_TableFeature(),
         ],
       }),
-      label: false,
     },
     {
       name: 'link',
       type: 'group',
-      label: 'Link',
+      label: {
+        en: 'Link',
+        de: 'Link',
+      },
       fields: [
         {
           name: 'label',
           type: 'text',
-          label: 'Link Label',
+          label: {
+            en: 'Link Label',
+            de: 'Link-Beschriftung',
+          },
         },
         {
           name: 'url',
           type: 'text',
-          label: 'URL',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
         },
         {
           name: 'target',
           type: 'select',
-          label: 'Target',
+          label: {
+            en: 'Target',
+            de: 'Ziel',
+          },
           options: [
             {
-              label: 'Same Tab',
+              label: {
+                en: 'Same Tab',
+                de: 'Gleiches Tab',
+              },
               value: '_self',
             },
             {
-              label: 'New Tab',
+              label: {
+                en: 'New Tab',
+                de: 'Neues Tab',
+              },
               value: '_blank',
             },
           ],
@@ -112,37 +164,56 @@ export const Hero: Field = {
     {
       name: 'type',
       type: 'select',
-      defaultValue: 'lowImpact',
-      label: 'Type',
+      label: {
+        en: 'Type',
+        de: 'Typ',
+      },
       options: [
         {
-          label: 'None',
+          label: {
+            en: 'None',
+            de: 'Keiner',
+          },
           value: 'none',
         },
         {
-          label: 'High Impact',
+          label: {
+            en: 'High Impact',
+            de: 'Hohe Wirkung',
+          },
           value: 'highImpact',
         },
         {
-          label: 'Medium Impact',
+          label: {
+            en: 'Medium Impact',
+            de: 'Mittlere Wirkung',
+          },
           value: 'mediumImpact',
         },
         {
-          label: 'Low Impact',
+          label: {
+            en: 'Low Impact',
+            de: 'Geringe Wirkung',
+          },
           value: 'lowImpact',
         },
       ],
+      defaultValue: 'lowImpact',
       required: true,
     },
     {
       name: 'media',
       type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      label: {
+        en: 'Media',
+        de: 'Medien',
       },
       relationTo: 'media',
       required: true,
+      admin: {
+        condition: (_, { type } = {}) =>
+          ['highImpact', 'mediumImpact'].includes(type),
+      },
     },
   ],
-  label: false,
-}
+};

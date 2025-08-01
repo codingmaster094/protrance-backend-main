@@ -10,8 +10,13 @@ import { Reviews } from '@/enableReviews/config'
 import { faq } from '@/faq/config'
 import { SEO } from '@/SEO/config'
 import slugify from 'slugify'
+
 export const SelbstfursorgePage: GlobalConfig = {
   slug: 'selbstfursorge',
+  label: {
+    en: 'Self-care',
+    de: 'Selbstfürsorge',
+  },
   access: {
     read: () => true,
   },
@@ -20,6 +25,10 @@ export const SelbstfursorgePage: GlobalConfig = {
       name: 'title',
       type: 'text',
       required: false,
+      label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',
@@ -29,54 +38,87 @@ export const SelbstfursorgePage: GlobalConfig = {
       admin: {
         readOnly: true,
       },
+      label: {
+        en: 'Slug',
+        de: 'Kurzlink',
+      },
       hooks: {
         beforeValidate: [
-  ({ siblingData, originalDoc }) => {
-    if (siblingData?.title && siblingData.title !== originalDoc?.title) {
-      return slugify(siblingData.title, { lower: true });
-    }
-  },
-]
-,
+          ({ siblingData, originalDoc }) => {
+            if (
+              siblingData?.title &&
+              siblingData.title !== originalDoc?.title
+            ) {
+              return slugify(siblingData.title, { lower: true })
+            }
+          },
+        ],
       },
     },
     {
       type: 'tabs',
       tabs: [
         {
-          label: 'Hero',
+          label: {
+            en: 'Hero',
+            de: 'Held',
+          },
           fields: [Hero],
         },
         {
-          label: 'Partner Logo',
+          label: {
+            en: 'Partner Logo',
+            de: 'Partnerlogo',
+          },
           fields: [partnerlogo],
         },
         {
-          label: 'Abouts',
+          label: {
+            en: 'About Section',
+            de: 'Über Abschnitt',
+          },
           fields: [abouts],
         },
         {
-          label: 'Meine Referenzen',
+          label: {
+            en: 'My References',
+            de: 'Meine Referenzen',
+          },
           fields: [Meine_Referenzen],
         },
         {
-          label: 'CTA',
+          label: {
+            en: 'Call To Action',
+            de: 'Handlungsaufruf',
+          },
           fields: [cta],
         },
         {
-          label: 'Service Section',
+          label: {
+            en: 'Service Section',
+            de: 'Dienstleistungsbereich',
+          },
           fields: [service],
         },
         {
-          label: 'Reviews',
+          label: {
+            en: 'Reviews',
+            de: 'Bewertungen',
+          },
           fields: [Reviews],
         },
         {
-          label: 'FAQ',
+          label: {
+            en: 'FAQ',
+            de: 'Häufige Fragen',
+          },
           fields: [faq],
         },
         {
-          label: 'SEO',
+          label: {
+            en: 'SEO',
+            de: 'SEO',
+          },
           fields: [SEO],
         },
       ],
@@ -86,6 +128,10 @@ export const SelbstfursorgePage: GlobalConfig = {
       type: 'date',
       admin: {
         position: 'sidebar',
+      },
+      label: {
+        en: 'Published At',
+        de: 'Veröffentlicht am',
       },
     },
   ],

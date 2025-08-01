@@ -206,6 +206,9 @@ export interface Post {
   id: string;
   authors?: (string | User)[] | null;
   title: string;
+  /**
+   * Auto-generated from title if left blank
+   */
   slug: string;
   hero: {
     container_Hight: 'full' | 'normal';
@@ -933,39 +936,6 @@ export interface Home {
         }[]
       | null;
     type?: ('none' | 'highImpact' | 'mediumImpact' | 'lowImpact') | null;
-    media?: (string | null) | Media;
-  };
-  gallery?: {
-    title?: string | null;
-    nestedSections?:
-      | {
-          galleryImage?: (string | null) | Media;
-          title?: string | null;
-          description?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-    type?: ('none' | 'highImpact' | 'mediumImpact' | 'lowImpact') | null;
-    richText?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    link?: {
-      label?: string | null;
-      url?: string | null;
-      target?: ('_self' | '_blank') | null;
-    };
     media?: (string | null) | Media;
   };
   partnerlogo?: {
@@ -2361,7 +2331,7 @@ export interface Raucherentwohnung {
     media?: (string | null) | Media;
   };
   abouts?: {
-    headding?: string | null;
+    heading?: string | null;
     description?: {
       root: {
         type: string;
@@ -2379,7 +2349,7 @@ export interface Raucherentwohnung {
     } | null;
     aboutsImage?: (string | null) | Media;
     title?: string | null;
-    main_description?: {
+    mainDescription?: {
       root: {
         type: string;
         children: {
@@ -2394,7 +2364,7 @@ export interface Raucherentwohnung {
       };
       [k: string]: unknown;
     } | null;
-    Sub_description?: {
+    subDescription?: {
       root: {
         type: string;
         children: {
@@ -2410,7 +2380,7 @@ export interface Raucherentwohnung {
       [k: string]: unknown;
     } | null;
     subtitle?: string | null;
-    Inner_description?: {
+    innerDescription?: {
       root: {
         type: string;
         children: {
@@ -2688,7 +2658,7 @@ export interface Selbstfursorge {
     media?: (string | null) | Media;
   };
   abouts?: {
-    headding?: string | null;
+    heading?: string | null;
     description?: {
       root: {
         type: string;
@@ -2721,7 +2691,7 @@ export interface Selbstfursorge {
       };
       [k: string]: unknown;
     } | null;
-    Sub_description?: {
+    sub_description?: {
       root: {
         type: string;
         children: {
@@ -2737,7 +2707,7 @@ export interface Selbstfursorge {
       [k: string]: unknown;
     } | null;
     subtitle?: string | null;
-    Inner_description?: {
+    inner_description?: {
       root: {
         type: string;
         children: {
@@ -3875,29 +3845,6 @@ export interface HomeSelect<T extends boolean = true> {
         type?: T;
         media?: T;
       };
-  gallery?:
-    | T
-    | {
-        title?: T;
-        nestedSections?:
-          | T
-          | {
-              galleryImage?: T;
-              title?: T;
-              description?: T;
-              id?: T;
-            };
-        type?: T;
-        richText?: T;
-        link?:
-          | T
-          | {
-              label?: T;
-              url?: T;
-              target?: T;
-            };
-        media?: T;
-      };
   partnerlogo?:
     | T
     | {
@@ -4631,14 +4578,14 @@ export interface RaucherentwohnungSelect<T extends boolean = true> {
   abouts?:
     | T
     | {
-        headding?: T;
+        heading?: T;
         description?: T;
         aboutsImage?: T;
         title?: T;
-        main_description?: T;
-        Sub_description?: T;
+        mainDescription?: T;
+        subDescription?: T;
         subtitle?: T;
-        Inner_description?: T;
+        innerDescription?: T;
         link?:
           | T
           | {
@@ -4797,14 +4744,14 @@ export interface SelbstfursorgeSelect<T extends boolean = true> {
   abouts?:
     | T
     | {
-        headding?: T;
+        heading?: T;
         description?: T;
         aboutsImage?: T;
         title?: T;
         main_description?: T;
-        Sub_description?: T;
+        sub_description?: T;
         subtitle?: T;
-        Inner_description?: T;
+        inner_description?: T;
         link?:
           | T
           | {
