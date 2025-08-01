@@ -3,7 +3,6 @@ import { revalidateHome } from './hooks/revalidateHome';
 import { Hero } from '@/Hero/config';
 import { partnerlogo } from '@/partner_logos/config';
 import { abouts } from '@/home_about/config';
-import { gallery } from '@/gallery/config';
 import { protance_zahlen } from '@/Protance_Zahlen/config';
 import { cta } from '@/CTA/config';
 import { cta2 } from '@/CTA2/config';
