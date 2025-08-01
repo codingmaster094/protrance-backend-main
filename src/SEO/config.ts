@@ -13,7 +13,10 @@ export const SEO: Field = {
   fields: [
     {
       name: 'meta',
-      label: 'SEO',
+      label: {
+        en: 'SEO',
+        de: 'SEO',
+      },
       type: 'group',
       fields: [
         MetaTitleField({ hasGenerateFn: true }),
@@ -108,5 +111,4 @@ export const SEO: Field = {
       },
     },
   ],
-  label: false,
 }

@@ -125,5 +125,4 @@ export const abouts: Field = {
       required: false,
     },
   ],
-  label: false,
 }

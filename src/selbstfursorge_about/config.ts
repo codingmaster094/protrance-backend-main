@@ -198,5 +198,4 @@ export const abouts: Field = {
       },
     },
   ],
-  label: false,
 }
