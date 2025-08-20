@@ -43,7 +43,7 @@ export const Uber_michPage: GlobalConfig = {
       admin: {
         readOnly: true,
       },
-     hooks: {
+      hooks: {
         beforeValidate: [
           ({ siblingData, value }) => {
             if (siblingData?.title) {
