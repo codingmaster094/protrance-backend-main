@@ -158,7 +158,7 @@ export interface UserAuthOperations {
 export interface User {
   id: string;
   title?: string | null;
-  slug: string;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;

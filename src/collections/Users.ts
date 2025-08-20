@@ -2,6 +2,12 @@ import type { CollectionConfig } from 'payload'
 import slugify from 'slugify'
 export const Users: CollectionConfig = {
   slug: 'users',
+    labels: {
+    plural: {
+      en: 'users',
+      de: 'Benutzer',
+    },
+  },
   admin: {
     useAsTitle: 'email',
   },
@@ -11,6 +17,10 @@ export const Users: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: false,
+       label: {
+        en: 'Title',
+        de: 'Titel',
+      },
     },
     {
       name: 'slug',

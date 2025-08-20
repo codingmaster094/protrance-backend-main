@@ -2,6 +2,12 @@
 
   export const Media: CollectionConfig = {
     slug: 'media',
+    labels: {
+    plural: {
+      en: 'media',
+      de: 'Medien',
+    },
+  },
     access: {
       read: () => true,
     },
