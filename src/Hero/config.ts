@@ -86,6 +86,19 @@ export const Hero: Field = {
       required: false,
     },
     {
+  name: 'video',
+  type: 'upload',
+  label: {
+    en: 'Hero Video',
+    de: 'Hero Video',
+  },
+  relationTo: 'media', // or 'videos' if you make a separate collection
+  required: false,
+  admin: {
+    description: 'Upload a video file (e.g. MP4, WebM)',
+  },
+},
+    {
       name: 'text',
       type: 'text',
       label: {
