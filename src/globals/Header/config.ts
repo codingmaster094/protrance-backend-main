@@ -55,6 +55,16 @@ export const Header: GlobalConfig = {
       required: false,
     },
     {
+      name: 'Mobile_Header_Logo',
+      type: 'upload',
+      label: {
+        en: 'Mobile Logo',
+        de: 'Mobiles Logo',
+      },
+      relationTo: 'media',
+      required: false,
+    },
+    {
       name: 'link',
       type: 'group',
       label: {

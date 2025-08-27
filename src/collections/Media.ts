@@ -26,7 +26,7 @@
       {
             name: 'creditText',
             type: 'text',
-            required: true,
+            required: false,
         },
     ],
   }
